@@ -1,0 +1,345 @@
+﻿<div ng-controller="EditCCCtrl">
+    <form name="form" class="form-horizontal">
+        <fieldset>
+            <legend>Order</legend>
+
+            <ul class="nav nav-tabs nav-stacked">
+                <li>
+                    <a ng-click="isCollapsedSC = !isCollapsedSC">Sales Coordinator <i ng-class="getCollapseCss(isCollapsedSC)"></i></a>
+                </li>
+            </ul>
+            <div collapse="isCollapsedSC">
+                <div class="control-group">
+                    <label class="control-label">Last Updated By</label>
+                    <div class="controls">
+                        {{model.User}}&nbsp;{{model.LastUpdateDatetime | datefilter | date:'yyyy-MM-dd'}}&nbsp;{{model.LastUpdateDatetime | datefilter | date:'shortTime'}}
+                    </div>
+                </div>
+
+                <h4>Sales Person Information</h4>
+
+                <div class="control-group">
+                    <label class="control-label">Name</label>
+                    <div class="controls">
+                        {{model.SalesPerson}}
+                    </div>
+                </div>
+
+                <h4>Order Information</h4>
+
+                <div class="control-group">
+                    <label class="control-label">Order Type</label>
+                    <div class="controls">
+                        {{model.OrderType}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Status</label>
+                    <div class="controls">
+                        {{model.StatusSC}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Received Date</label>
+                    <div class="controls">
+                        {{model.ReceivedDate | datefilter | date:'yyyy-MM-dd'}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Received Time</label>
+                    <div class="controls">
+                        {{model.ReceivedTime | datefilter | date:'shortTime'}}
+                    </div>
+                </div>
+
+                <h4>Customer Information</h4>
+
+                <div class="control-group">
+                    <label class="control-label">Customer Name</label>
+                    <div class="controls">
+                        {{model.CustName}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Customer Address</label>
+                    <div class="controls">
+                        {{model.CustAddr}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Customer ID</label>
+                    <div class="controls">
+                        {{model.CustID}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Contact Person Name</label>
+                    <div class="controls">
+                        {{model.ContactPerson}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Contact Person No.</label>
+                    <div class="controls">
+                        {{model.ContactPersonNo}}
+                    </div>
+                </div>
+
+                <h4 ng-hide="model.OrderTypeID == 4">New &amp; Variation Order Only</h4>
+
+                <div class="control-group">
+                    <label class="control-label"></label>
+                    <div class="controls">
+                        <label class="checkbox inline" ng-hide="hideIsCoverageAvailable">
+                            <i ng-class="$parent.getYesNoIcon(model.IsCoverageAvailable)"></i> Coverage Area Available
+                        </label>
+                        <label class="checkbox inline" ng-hide="hideIsDemandList">
+                            <i ng-class="getYesNoIcon(model.IsDemandList)"></i> Demand List
+                        </label>
+                        <label class="checkbox inline" ng-hide="hideIsReqFixedLine">
+                            <i ng-class="getYesNoIcon(model.IsReqFixedLine)"></i> Request Fixed Line
+                        </label>
+                        <label class="checkbox inline" ng-hide="hideIsCeoApproved">
+                            <i ng-class="getYesNoIcon(model.IsCeoApproved)"></i> CEO Approved
+                        </label>
+                        <label class="checkbox inline" ng-hide="hideIsWithdrawFixedLineReq">
+                            <i ng-class="getYesNoIcon(model.IsWithdrawFixedLineReq)"></i> Withdraw Fixed Line Request
+                        </label>
+                    </div>
+                </div>
+                <div class="control-group" ng-hide="hideReasonWithdraw">
+                    <label class="control-label">Reason For Withdrawal</label>
+                    <div class="controls">
+                        {{model.ReasonWithdraw}}
+                    </div>
+                </div>
+
+                <h4>Installation / Removal</h4>
+
+                <div class="control-group">
+                    <label class="control-label">KIV</label>
+                    <div class="controls">
+                        <i ng-class="getYesNoIcon(model.IsKIV)"></i>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Booked Installation / Removal Date</label>
+                    <div class="controls">
+                        {{model.BookedInstallDate | datefilter | date:'yyyy-MM-dd'}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Booked Installation / Removal Time</label>
+                    <div class="controls">
+                        {{model.BookedInstallTime | datefilter | date:'shortTime'}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">BTU Installed</label>
+                    <div class="controls">
+                        <i ng-class="getYesNoIcon(model.IsBTUInstalled)"></i>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Documents</label>
+                    <div class="controls" ng-hide="!fileLinks.length">
+                        <table class="table table-striped table-hover table-condensed">
+                            <tr ng-repeat="file in fileLinks">
+                                <td><a href="{{file.url}}" target="_blank">{{file.filename}}</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="nav nav-tabs nav-stacked">
+                <li>
+                    <a ng-click="isCollapsedCC = !isCollapsedCC">Credit Control <i ng-class="getCollapseCss(isCollapsedCC)"></i></a>
+                </li>
+            </ul>
+            <div collapse="isCollapsedCC">
+                <div class="control-group">
+                    <label class="control-label">Status</label>
+                    <div class="controls">
+                        <select id="StatusCC" name="StatusCC" class="input-block-level"
+                                ng-model="model.StatusCC"
+                                ng-required="true"
+                                ui-select2
+                                data-placeholder="Please select">
+                            <option ng-repeat="o in model.StatusTypes" value="{{o.ID}}">{{o.Name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Reason for Rejection</label>
+                    <div class="controls">
+                        <textarea id="ReasonRejectCC" name="ReasonRejectCC" class="input-block-level"
+                                  placeholder="Reason for Rejection"
+                                  x-webkit-speech="x-webkit-speech"
+                                  ng-model="model.ReasonRejectCC"
+                                  ng-maxlength="200"></textarea>
+                        <span class="label label-important" ng-show="form.ReasonRejectCC.$error.maxlength">The field Reason for Rejection must be a string with a maximum length of 200.</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Remarks</label>
+                    <div class="controls">
+                        <textarea id="RemarksCC" name="RemarksCC" class="input-block-level"
+                                  placeholder="Remarks"
+                                  x-webkit-speech="x-webkit-speech"
+                                  ng-model="model.RemarksCC"
+                                  ng-maxlength="200"></textarea>
+                        <span class="label label-important" ng-show="form.RemarksCC.$error.maxlength">The field Remarks must be a string with a maximum length of 200.</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Last Updated By</label>
+                    <div class="controls">
+                        {{model.CCUser}}&nbsp;{{model.LastUpdateDatetimeCC | datefilter | date:'yyyy-MM-dd'}}&nbsp;{{model.LastUpdateDatetimeCC | datefilter | date:'shortTime'}}
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="button" class="btn btn-primary" ng-click="save()"><i class="icon-ok icon-white"></i> Save</button>
+                        <button type="button" class="btn btn-default" ng-click="cancelEdit()"><i class="icon-ban-circle"></i> Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="nav nav-tabs nav-stacked">
+                <li>
+                    <a ng-click="isCollapsedFL = !isCollapsedFL">Fixed Line <i ng-class="getCollapseCss(isCollapsedFL)"></i></a>
+                </li>
+            </ul>
+            <div collapse="isCollapsedFL">
+                <div class="control-group">
+                    <label class="control-label">Status</label>
+                    <div class="controls">
+                        {{model.StatusFL}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Reason for Rejection</label>
+                    <div class="controls">
+                        {{model.ReasonRejectFL}}
+                    </div>
+                </div>
+                <div class="control-group" ng-hide="hideAllocatedFixedLineNo">
+                    <label class="control-label">Allocated Fixed Line Number</label>
+                    <div class="controls">
+                        {{model.AllocatedFixedLineNo}}
+                    </div>
+                </div>
+                <div class="control-group" ng-hide="hideRemarksFL">
+                    <label class="control-label">Remarks</label>
+                    <div class="controls">
+                        {{model.RemarksFL}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Last Updated By</label>
+                    <div class="controls">
+                        {{model.FLUser}}&nbsp;{{model.LastUpdateDatetimeFL | datefilter | date:'yyyy-MM-dd'}}&nbsp;{{model.LastUpdateDatetimeFL | datefilter | date:'shortTime'}}
+                    </div>
+                </div>
+            </div>
+
+            <ul class="nav nav-tabs nav-stacked">
+                <li>
+                    <a ng-click="isCollapsedAC = !isCollapsedAC">Account Creation <i ng-class="getCollapseCss(isCollapsedAC)"></i></a>
+                </li>
+            </ul>
+            <div collapse="isCollapsedAC">
+                <div class="control-group">
+                    <label class="control-label">Status</label>
+                    <div class="controls">
+                        {{model.StatusAC}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Reason for Rejection</label>
+                    <div class="controls">
+                        {{model.ReasonRejectAC}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Remarks</label>
+                    <div class="controls">
+                        {{model.RemarksAC}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Form Received</label>
+                    <div class="controls">
+                        <i ng-class="getYesNoIcon(model.IsFormReceived)"></i>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Last Updated By</label>
+                    <div class="controls">
+                        {{model.ACUser}}&nbsp;{{model.LastUpdateDatetimeAC | datefilter | date:'yyyy-MM-dd'}}&nbsp;{{model.LastUpdateDatetimeAC | datefilter | date:'shortTime'}}
+                    </div>
+                </div>
+            </div>
+
+            <ul class="nav nav-tabs nav-stacked">
+                <li>
+                    <a ng-click="isCollapsedInstall = !isCollapsedInstall">Installation <i ng-class="getCollapseCss(isCollapsedInstall)"></i></a>
+                </li>
+            </ul>
+            <div collapse="isCollapsedInstall">
+                <div class="control-group">
+                    <label class="control-label">Status</label>
+                    <div class="controls">
+                        {{model.StatusInstall}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Reason for Rejection</label>
+                    <div class="controls">
+                        {{model.ReasonRejectInstall}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Installation Date</label>
+                    <div class="controls">
+                        {{model.InstallDate | datefilter | date:'yyyy-MM-dd'}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Installation Time</label>
+                    <div class="controls">
+                        {{model.InstallTime | datefilter | date:'shortTime'}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">BTU ID</label>
+                    <div class="controls">
+                        {{model.BTUID}}
+                    </div>
+                </div>
+                <div class="control-group" ng-hide="hideBTUInstalled">
+                    <label class="control-label">BTU Installed?</label>
+                    <div class="controls">
+                        {{model.BTUInstalled}}
+                    </div>
+                </div>
+                <div class="control-group" ng-hide="hideSIPPort">
+                    <label class="control-label">SIP Port</label>
+                    <div class="controls">
+                        {{model.SIPPort}}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Last Updated By</label>
+                    <div class="controls">
+                        {{model.InstallUser}}&nbsp;{{model.LastUpdateDatetimeInstall | datefilter | date:'yyyy-MM-dd'}}&nbsp;{{model.LastUpdateDatetimeInstall | datefilter | date:'shortTime'}}
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<script src="~/Areas/Fibre/js/order/editcc.js"></script>

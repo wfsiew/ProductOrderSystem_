@@ -1,0 +1,107 @@
+﻿@model ProductOrderSystem.Domain.Fibre.Models.Order
+
+@using ProductOrderSystem.WebUI.Helpers
+
+@{
+    ViewBag.Title = "Order Details";
+}
+
+<h2>Order Details</h2>
+
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @TempData["message"]
+    </div>
+}
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<div ng-controller="DetailsACCtrl">
+    <form id="form" name="form" class="form-horizontal" method="post" action="@Url.Action("DetailsACResubmit", "Order")">
+        <fieldset>
+            @{ Html.RenderPartial("_DetailsSC", Model); }
+            @{ Html.RenderPartial("_DetailsCC", Model); }
+            @{ Html.RenderPartial("_DetailsFL", Model); }
+
+            <ul class="nav nav-tabs nav-stacked">
+                <li>
+                    <a ng-click="isCollapsedAC = !isCollapsedAC">Account Creation <i ng-class="getCollapseCss(isCollapsedAC)"></i></a>
+                </li>
+            </ul>
+            <div collapse="isCollapsedAC">
+                <div class="control-group">
+                    <label class="control-label">Status</label>
+                    <div class="controls">
+                        <select id="StatusAC" name="StatusAC" class="input-block-level"
+                                ng-model="StatusAC"
+                                ng-init="initStatusAC(@ViewBag.StatusAC)"
+                                ui-select2>
+                            @foreach (SelectListItem o in ViewBag.StatusTypesCC)
+                            {
+                                <option value="@o.Value">@o.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Reason for Rejection</label>
+                    <div class="controls">
+                        <textarea id="ReasonRejectAC" name="ReasonRejectAC" class="input-block-level"
+                                  placeholder="Reason for Rejection"
+                                  x-webkit-speech="x-webkit-speech"
+                                  ng-model="ReasonRejectAC"
+                                  ng-maxlength="200"
+                                  ng-init="initReasonRejectAC('@Model.ReasonRejectAC')"></textarea>
+                        <span class="label label-important" ng-show="form.ReasonRejectAC.$error.maxlength">The field Reason for Rejection must be a string with a maximum length of 200.</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Remarks</label>
+                    <div class="controls">
+                        <textarea id="RemarksAC" name="RemarksAC" class="input-block-level"
+                                  placeholder="Remarks"
+                                  x-webkit-speech="x-webkit-speech"
+                                  ng-model="RemarksAC"
+                                  ng-maxlength="200"
+                                  ng-init="initRemarksAC('@Model.RemarksAC')"></textarea>
+                        <span class="label label-important" ng-show="form.RemarksAC.$error.maxlength">The field Remarks must be a string with a maximum length of 200.</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Form Received</label>
+                    <div class="controls">
+                        <input id="IsFormReceived" name="IsFormReceived" type="checkbox" value="true"
+                               ng-model="IsFormReceived"
+                               ng-init="initIsFormReceived(@(Model.IsFormReceived ? 1 : 0))" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Last Updated By</label>
+                    <div class="controls">
+                        @if (Model.ACUser != null && Model.LastUpdateDatetimeAC != null)
+                        {
+                            @Model.ACUser.Name@:&nbsp;@Utils.GetDateStr(Model.LastUpdateDatetimeAC)&nbsp;@Utils.GetTimeStr(Model.LastUpdateDatetimeAC)
+                        }
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="button" class="btn btn-success" ng-click="save()">Save</button>
+                    </div>
+                </div>
+            </div>
+
+            @{ Html.RenderPartial("_DetailsInstall", Model); }
+        </fieldset>
+    </form>
+</div>
+
+<script src="~/Areas/Fibre/js/order/detailsac.js"></script>

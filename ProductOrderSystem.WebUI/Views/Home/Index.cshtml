@@ -1,0 +1,59 @@
+﻿@using ProductOrderSystem.WebUI.Helpers
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<div ng-controller="HomeCtrl">
+    <div ng-hide="edit || view">
+        @if (ViewBag.Role != Constants.SALES_COORDINATOR && ViewBag.Role != Constants.SUPER_ADMIN)
+        {
+            <div class="alert alert-block">
+                <h4>Overdue Tasks</h4>
+            </div>
+            Html.RenderPartial("~/Areas/Fibre/Views/Order/_ListOverdue.cshtml");
+        }
+        <div class="alert alert-block">
+            <h4>Pending Tasks</h4>
+        </div>
+        @{ Html.RenderPartial("~/Areas/Fibre/Views/Order/_List.cshtml"); }
+    </div>
+
+    <div ng-show="edit">
+        @if (ViewBag.Role == Constants.SALES_COORDINATOR)
+        {
+            Html.RenderPartial("~/Areas/Fibre/Views/Order/_EditSC.cshtml");
+        }
+
+        else if (ViewBag.Role == Constants.CREDIT_CONTROL)
+        {
+            Html.RenderPartial("~/Areas/Fibre/Views/Order/_EditCC.cshtml");
+        }
+
+        else if (ViewBag.Role == Constants.FIXED_LINE)
+        {
+            Html.RenderPartial("~/Areas/Fibre/Views/Order/_EditFL.cshtml");
+        }
+
+        else if (ViewBag.Role == Constants.BILLING)
+        {
+            Html.RenderPartial("~/Areas/Fibre/Views/Order/_EditAC.cshtml");
+        }
+
+        else if (ViewBag.Role == Constants.INSTALLERS)
+        {
+            Html.RenderPartial("~/Areas/Fibre/Views/Order/_EditInstall.cshtml");
+        }
+
+        @if (ViewBag.Role == Constants.SUPER_ADMIN)
+        {
+            Html.RenderPartial("~/Areas/Fibre/Views/Order/_EditSC.cshtml");
+        }
+    </div>
+
+    <div ng-show="view">
+        @{ Html.RenderPartial("~/Areas/Fibre/Views/Order/_View.cshtml"); }
+    </div>
+</div>
+
+<script src="~/js/home/index.js"></script>

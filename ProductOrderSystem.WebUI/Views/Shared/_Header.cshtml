@@ -1,0 +1,29 @@
+﻿@using ProductOrderSystem.WebUI.Helpers
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand">@System.Configuration.ConfigurationManager.AppSettings["CompanyName"]</a>
+            <div class="pull-right">
+                <ul class="nav">
+                @if (!String.IsNullOrEmpty(User.Identity.Name))
+                {
+                    <li>
+                        <a href="@Url.Action("LogOff", "Account")"><i class="icon-off"></i> Logout</a>
+                    </li>
+                    <li class="divider-vertical"></li>
+                    <li>
+                        <a href="@Url.Action("Profile", "Account")"><i class="icon-user"></i> @User.Identity.Name (@Utils.Role(User))</a>
+                    </li>
+                }
+                
+                else
+                {
+                    <li class="divider-vertical"></li>
+                    <li>@Html.ActionLink("Log On", "LogOn", "Account")</li>
+                }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

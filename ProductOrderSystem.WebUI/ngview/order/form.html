@@ -1,0 +1,183 @@
+﻿<div class="well">
+    <form name="form" method="post" class="form-horizontal">
+        <ng-include src="successTemplate"></ng-include>
+        <ng-include src="alertTemplate"></ng-include>
+
+        <fieldset>
+            <legend>Order</legend>
+            <h4>Sales Person Information</h4>
+
+            <div class="control-group">
+                <label class="control-label">Name</label>
+                <div class="controls">
+                    <select id="Name" name="Name" ng-model="model.Name" ng-required="true">
+                        <option ng-repeat="o in SalesPersons" value="{{o.ID}}" ng-required="true">{{o.Name}}</option>
+                    </select>
+                    <span class="label label-important" ng-show="form.Name.$error.required">The Name field is required.</span>
+                </div>
+            </div>
+
+            <h4>Order Information</h4>
+
+            <div class="control-group">
+                <label class="control-label">Order Type</label>
+                <div class="controls">
+                    New
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Status</label>
+                <div class="controls">
+                    Pending
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Received Date</label>
+                <div class="controls">
+                    <div class="control-group input-append">
+                        <input id="ReceivedDate" name="ReceivedDate" type="text" class="input-medium"
+                               ng-model="model.ReceivedDate" ng-required="true"
+                               datepicker-popup="yyyy-MM-dd" is-open="openedReceivedDate" />
+                        <button type="button" class="btn" ng-click="openReceivedDate()"><i class="icon-calendar"></i></button>
+                    </div>
+                    <span class="label label-important" ng-show="form.ReceivedDate.$error.required">The Received Date field is required.</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Received Time</label>
+                <div class="controls">
+                    <div class="control-group input-append">
+                        <input id="ReceivedTime" name="ReceivedTime" type="text" class="input-medium"
+                               ng-model="model.ReceivedTime" ng-required="true"
+                               bs-timepicker="" />
+                        <button type="button" class="btn" data-toggle="timepicker"><i class="icon-time"></i></button>
+                    </div>
+                    <span class="label label-important" ng-show="form.ReceivedTime.$error.required">The Received Time field is required.</span>
+                </div>
+            </div>
+
+            <h4>Customer Information</h4>
+
+            <div class="control-group">
+                <label class="control-label">Customer Name</label>
+                <div class="controls">
+                    <input id="CustName" name="CustName" type="text" placeholder="Customer Name" x-webkit-speech="x-webkit-speech"
+                           ng-model="model.CustName" ng-required="true" ng-maxlength="100" />
+                    <span class="label label-important" ng-show="form.CustName.$error.required">The Customer Name field is required.</span>
+                    <span class="label label-important" ng-show="form.CustName.$error.maxlength">The field Customer Name must be a string with a maximum length of 100.</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Customer Address</label>
+                <div class="controls">
+                    <textarea id="CustAddr" name="CustAddr" placeholder="Customer Address" x-webkit-speech="x-webkit-speech"
+                              ng-model="model.CustAddr" ng-required="true" ng-maxlength="100"></textarea>
+                    <span class="label label-important" ng-show="form.CustAddr.$error.required">The Customer Address field is required.</span>
+                    <span class="label label-important" ng-show="form.CustAddr.$error.maxlength">The field Customer Address must be a string with a maximum length of 100.</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Customer ID</label>
+                <div class="controls">
+                    <input id="CustID" name="CustID" type="text" placeholder="Customer ID" x-webkit-speech="x-webkit-speech"
+                           ng-model="model.CustID" ng-maxlength="10" />
+                    <span class="label label-important" ng-show="form.CustID.$error.maxlength">The field Name must be a string with a maximum length of 10.</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Contact Person Name</label>
+                <div class="controls">
+                    <input id="ContactPerson" name="ContactPerson" type="text" placeholder="Contact Person" x-webkit-speech="x-webkit-speech"
+                           ng-model="model.ContactPerson" ng-required="true" ng-maxlength="100" />
+                    <span class="label label-important" ng-show="form.ContactPerson.$error.required">The Contact Person field is required.</span>
+                    <span class="label label-important" ng-show="form.ContactPerson.$error.maxlength">The field Contact Person must be a string with a maximum length of 100.</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Contact Person No.</label>
+                <div class="controls">
+                    <input id="ContactPersonNo" name="ContactPersonNo" type="text" placeholder="Contact Person No." x-webkit-speech="x-webkit-speech"
+                           ng-model="model.ContactPersonNo" ng-required="true" ng-maxlength="50" />
+                    <span class="label label-important" ng-show="form.ContactPersonNo.$error.required">The Contact Person No. field is required.</span>
+                    <span class="label label-important" ng-show="form.ContactPersonNo.$error.maxlength">The field Contact Person No. must be a string with a maximum length of 50.</span>
+                </div>
+            </div>
+
+            <h4>New &amp; Variation Order Only</h4>
+
+            <div class="control-group">
+                <label class="control-label">Coverage Area Available</label>
+                <div class="controls">
+                    <input id="IsCoverageAvailable" name="IsCoverageAvailable" type="checkbox"
+                           ng-model="model.IsCoverageAvailable" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Demand List</label>
+                <div class="controls">
+                    <input id="IsDemandList" name="IsDemandList" type="checkbox"
+                           ng-model="model.IsDemandList" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Request Fixed Line</label>
+                <div class="controls">
+                    <input id="IsReqFixedLine" name="IsReqFixedLine" type="checkbox"
+                           ng-model="model.IsReqFixedLine" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">CEO Approved</label>
+                <div class="controls">
+                    <input id="IsCeoApproved" name="IsCeoApproved" type="checkbox"
+                           ng-model="model.IsCeoApproved" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Withdraw Fixed Line Request</label>
+                <div class="controls">
+                    <input id="IsWithdrawFixedLineReq" name="IsWithdrawFixedLineReq" type="checkbox"
+                           ng-model="model.IsWithdrawFixedLineReq" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Reason For Withdrawal</label>
+                <div class="controls">
+                    <textarea id="ReasonWithdraw" name="ReasonWithdraw" placeholder="Reason For Withdrawal" x-webkit-speech="x-webkit-speech"
+                              ng-model="model.ReasonWithdraw"></textarea>
+                </div>
+            </div>
+
+            <h4>Installation / Removal</h4>
+
+            <div class="control-group">
+                <label class="control-label">Booked Installation / Removal Date</label>
+                <div class="controls">
+                    <div class="control-group input-append">
+                        <input id="BookedInstallDate" name="BookedInstallDate" type="text" class="input-medium"
+                               ng-model="model.BookedInstallDate" ng-required="true"
+                               datepicker-popup="yyyy-MM-dd" is-open="openedBookedInstallDate" />
+                        <button type="button" class="btn" ng-click="openBookedInstallDate()"><i class="icon-calendar"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Booked Installation / Removal Time</label>
+                <div class="controls">
+                    <div class="control-group input-append">
+                        <input id="BookedInstallTime" name="BookedInstallTime" type="text" class="input-medium"
+                               ng-model="model.BookedInstallTime" ng-required="true"
+                               bs-timepicker="" />
+                        <button type="button" class="btn" data-toggle="timepicker"><i class="icon-time"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="controls">
+                    <button type="button" class="btn btn-primary" ng-click="save()"><i class="icon-ok icon-white"></i> Save</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

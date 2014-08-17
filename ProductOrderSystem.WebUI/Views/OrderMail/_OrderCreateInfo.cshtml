@@ -1,0 +1,190 @@
+﻿@model ProductOrderSystem.Domain.Models.Order
+
+@using ProductOrderSystem.WebUI.Helpers
+
+<fieldset>
+    <table>
+        <tbody>
+            <tr>
+                <td class="tdRight">Last Updated By : </td>
+                <td>
+                    @Model.User.Name&nbsp;@Utils.GetDateStr(Model.LastUpdateDatetime)&nbsp;@Utils.GetTimeStr(Model.LastUpdateDatetime)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</fieldset>
+
+<fieldset>
+    <legend>Sales Person Information</legend>
+
+    <table>
+        <tbody>
+            <tr>
+                <td class="tdRight">Name : </td>
+                <td>@Model.SalesPerson.Name</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Email : </td>
+                <td>@Model.SalesPerson.UserEmail</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Mobile Number : </td>
+                <td>@Model.SalesPerson.PhoneNo</td>
+            </tr>
+        </tbody>
+    </table>
+</fieldset>
+
+<fieldset>
+    <legend>Order Information</legend>
+
+    <table>
+        <tbody>
+            <tr>
+                <td class="tdRight">Overall Status : </td>
+                <td>@ViewData["Status"].ToString()</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Order Type: </td>
+                <td>@ViewData["OrderType"].ToString()</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Order ID : </td>
+                <td>@Model.ID</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Status : </td>
+                <td>@ViewData["StatusSC"].ToString()</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Received Date : </td>
+                <td>@Utils.GetDateStr(Model.ReceivedDatetime)</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Received Time : </td>
+                <td>@Utils.GetTimeStr(Model.ReceivedDatetime)</td>
+            </tr>
+        </tbody>
+    </table>
+</fieldset>
+
+<fieldset>
+    <legend>Customer Information</legend>
+
+    <table>
+        <tbody>
+            <tr>
+                <td class="tdRight">Customer Name : </td>
+                <td>@Model.CustName</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Customer Address : </td>
+                <td>@Html.Raw(Utils.FormatHtml(Model.CustAddr))</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Customer ID</td>
+                <td>@Model.CustID</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Contact Person Name</td>
+                <td>@Model.ContactPerson</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Contact Person No.</td>
+                <td>@Model.ContactPersonNo</td>
+            </tr>
+        </tbody>
+    </table>
+</fieldset>
+
+@if (Model.OrderTypeID == 1 || Model.OrderTypeID == 2 || Model.OrderTypeID == 3)
+{
+    <fieldset>
+        <legend>New &amp; Variation Order Only</legend>
+
+        <table>
+            <tbody>
+                @if (Model.OrderTypeID == 1 || Model.OrderTypeID == 2)
+                {
+                    <tr>
+                        <td class="tdRight">Coverage area available ? </td>
+                        <td>@Utils.GetYesNo(Model.IsCoverageAvailable)</td>
+                    </tr>
+                    <tr>
+                        <td class="tdRight">Demand List : </td>
+                        <td>@Utils.GetYesNo(Model.IsDemandList)</td>
+                    </tr>
+                }
+
+                @if (Model.OrderTypeID == 1 || Model.OrderTypeID == 2 || Model.OrderTypeID == 3)
+                {
+                    <tr>
+                        <td class="tdRight">Request Fixed Line : </td>
+                        <td>@Utils.GetYesNo(Model.IsReqFixedLine)</td>
+                    </tr>
+                    <tr>
+                        <td class="tdRight">CEO Approved : </td>
+                        <td>@Utils.GetYesNo(Model.IsCeoApproved)</td>
+                    </tr>
+                }
+                
+                @if (Model.OrderTypeID == 1 || Model.OrderTypeID == 2)
+                {
+                    <tr>
+                        <td class="tdRight">Withdraw Fixed Line request ? </td>
+                        <td>@Utils.GetYesNo(Model.IsWithdrawFixedLineReq)</td>
+                    </tr>
+                    <tr>
+                        <td class="tdRight">Reason for withdrawal : </td>
+                        <td>@Html.Raw(Utils.FormatHtml(Model.ReasonWithdraw))</td>
+                    </tr>
+                }
+                
+                @if (Model.OrderTypeID == 3)
+                {
+                    <tr>
+                        <td class="tdRight">Service Upgrade : </td>
+                        <td>@Utils.GetYesNo(Model.IsServiceUpgrade)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </fieldset>
+}
+
+<fieldset>
+    <legend>Installation / Removal</legend>
+
+    <table>
+        <tbody>
+            <tr>
+                <td class="tdRight">KIV : </td>
+                <td>@Utils.GetYesNo(Model.IsKIV)</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Booked installation / removal date : </td>
+                <td>@Utils.GetDateStr(Model.InstallDatetime)</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Booked installation / removal time : </td>
+                <td>@Utils.GetTimeStr(Model.InstallDatetime)</td>
+            </tr>
+            <tr>
+                <td class="tdRight">BTU Installed : </td>
+                <td>@Utils.GetYesNo(Model.IsBTUInstalled)</td>
+            </tr>
+        </tbody>
+    </table>
+</fieldset>
+
+<fieldset>
+    <table>
+        <tbody>
+            <tr>
+                <td class="tdRight">Comments : </td>
+                <td>@Html.Raw(Utils.FormatHtml(Model.Comments))</td>
+            </tr>
+        </tbody>
+    </table>
+</fieldset>

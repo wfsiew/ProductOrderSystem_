@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductOrderSystem.Domain", "ProductOrderSystem.Domain\ProductOrderSystem.Domain.csproj", "{A6A55146-FFE2-4689-94D4-FAE4D86B8B41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductOrderSystem.WebUI", "ProductOrderSystem.WebUI\ProductOrderSystem.WebUI.csproj", "{334189C6-D3DE-4BE5-9C3E-F273E202D32B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleAppHelper", "GoogleAppHelper\GoogleAppHelper.csproj", "{2225420C-C949-417A-8BD4-EAD27B330985}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAddUser", "ConsoleAddUser\ConsoleAddUser.csproj", "{06EA1D55-743C-4DE0-BA3F-EB48342F8092}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductOrderSystem.Task", "ProductOrderSystem.Task\ProductOrderSystem.Task.csproj", "{3D91672E-79E1-4409-A9D0-20A5744207DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6A55146-FFE2-4689-94D4-FAE4D86B8B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6A55146-FFE2-4689-94D4-FAE4D86B8B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6A55146-FFE2-4689-94D4-FAE4D86B8B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6A55146-FFE2-4689-94D4-FAE4D86B8B41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{334189C6-D3DE-4BE5-9C3E-F273E202D32B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{334189C6-D3DE-4BE5-9C3E-F273E202D32B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{334189C6-D3DE-4BE5-9C3E-F273E202D32B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{334189C6-D3DE-4BE5-9C3E-F273E202D32B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2225420C-C949-417A-8BD4-EAD27B330985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2225420C-C949-417A-8BD4-EAD27B330985}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2225420C-C949-417A-8BD4-EAD27B330985}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2225420C-C949-417A-8BD4-EAD27B330985}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06EA1D55-743C-4DE0-BA3F-EB48342F8092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06EA1D55-743C-4DE0-BA3F-EB48342F8092}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06EA1D55-743C-4DE0-BA3F-EB48342F8092}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06EA1D55-743C-4DE0-BA3F-EB48342F8092}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D91672E-79E1-4409-A9D0-20A5744207DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D91672E-79E1-4409-A9D0-20A5744207DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D91672E-79E1-4409-A9D0-20A5744207DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D91672E-79E1-4409-A9D0-20A5744207DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

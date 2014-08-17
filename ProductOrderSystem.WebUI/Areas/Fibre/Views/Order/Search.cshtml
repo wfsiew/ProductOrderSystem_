@@ -1,0 +1,175 @@
+﻿@using ProductOrderSystem.WebUI.Helpers
+
+@{
+    ViewBag.Title = "Search Order";
+}
+
+<div ng-controller="SearchOrderCtrl">
+    <div ng-hide="edit || view">
+        <div collapse="isCollapsed">
+            <form name="form" class="form-horizontal well" novalidate ng-submit="formSubmit()">
+                <div class="control-group">
+                    <label class="control-label">Specific Date</label>
+                    <div class="controls">
+                        <div class="control-group input-prepend input-append">
+                            <span class="add-on">From</span>
+                            <input id="DateFrom" name="DateFrom" type="text" class="input-medium"
+                                   ng-model="model.DateFrom"
+                                   datepicker-popup="yyyy-MM-dd"
+                                   is-open="openedDateFrom" />
+                            <button type="button" class="btn" ng-click="openDateFrom()"><i class="icon-calendar"></i></button>
+                        </div>
+                        <div class="control-group input-prepend input-append">
+                            <span class="add-on">To</span>
+                            <input id="DateTo" name="DateTo" type="text" class="input-medium"
+                                   ng-model="model.DateTo"
+                                   datepicker-popup="yyyy-MM-dd"
+                                   is-open="openedDateTo" />
+                            <button type="button" class="btn" ng-click="openDateTo()"><i class="icon-calendar"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Customer Name</label>
+                    <div class="controls">
+                        <input id="CustName" name="CustName" type="text" class="ucase"
+                               placeholder="Customer Name"
+                               x-webkit-speech="x-webkit-speech"
+                               ng-model="model.CustName" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Order ID</label>
+                    <div class="controls">
+                        <input id="OrderID" name="OrderID" type="text" class="ucase"
+                               placeholder="Order ID"
+                               x-webkit-speech="x-webkit-speech"
+                               ng-model="model.OrderID" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Customer ID</label>
+                    <div class="controls">
+                        <input id="CustID" name="CustID" type="text" class="ucase"
+                               placeholder="Customer ID"
+                               x-webkit-speech="x-webkit-speech"
+                               ng-model="model.CustID" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Sales Person</label>
+                    <div class="controls">
+                        <select id="SalesPersonID" name="SalesPersonID" class="input-xlarge"
+                                ng-model="model.SalesPersonID"
+                                ng-disabled="disableSalesPersonID"
+                                ng-init="initSalesPersonID('@ViewBag.SalesPersonID')"
+                                ui-select2
+                                data-placeholder="Please select">
+                            <option value="">Please select</option>
+                            @foreach (SelectListItem o in ViewBag.SalesPersons)
+                            {
+                                <option value="@o.Value">@o.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Address</label>
+                    <div class="controls">
+                        <input id="CustAddr" name="CustAddr" type="text" class="input-xxlarge ucase"
+                               placeholder="Address"
+                               x-webkit-speech="x-webkit-speech"
+                               ng-model="model.CustAddr" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Overall Status</label>
+                    <div class="controls">
+                        <select id="Stat" name="Stat" class="input-xlarge"
+                                ng-model="model.Stat"
+                                ui-select2
+                                data-placeholder="Please select">
+                            <option value="">Please select</option>
+                            <option value="0">Pending</option>
+                            <option value="1">Success</option>
+                            <option value="2">Reject</option>
+                            <option value="3">Withdrawn</option>
+                            <option value="4">KIV</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Order Type</label>
+                    <div class="controls">
+                        <select id="OrderTypeID" name="OrderTypeID" class="input-xlarge"
+                                ng-model="model.OrderTypeID"
+                                ui-select2
+                                data-placeholder="Please select">
+                            <option value="">Please select</option>
+                            @foreach (SelectListItem o in ViewBag.OrderTypes)
+                            {
+                                <option value="@o.Value">@o.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Demand List</label>
+                    <div class="controls">
+                        <input id="DemandList" name="DemandList" type="checkbox"
+                               ng-model="model.IsDemandList" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <ul class="nav nav-tabs nav-stacked">
+            <li>
+                <a ng-click="isCollapsed = !isCollapsed">Toggle Search <i ng-class="getCollapseCss()"></i></a>
+            </li>
+        </ul>
+        @{ Html.RenderPartial("_List"); }
+    </div>
+
+    <div ng-show="edit">
+        @if (ViewBag.Role == Constants.SALES_COORDINATOR)
+        {
+            Html.RenderPartial("_EditSC");
+        }
+
+        else if (ViewBag.Role == Constants.CREDIT_CONTROL)
+        {
+            Html.RenderPartial("_EditCC");
+        }
+
+        else if (ViewBag.Role == Constants.FIXED_LINE)
+        {
+            Html.RenderPartial("_EditFL");
+        }
+
+        else if (ViewBag.Role == Constants.BILLING)
+        {
+            Html.RenderPartial("_EditAC");
+        }
+
+        else if (ViewBag.Role == Constants.INSTALLERS)
+        {
+            Html.RenderPartial("_EditInstall");
+        }
+
+        @if (ViewBag.Role == Constants.SUPER_ADMIN)
+        {
+            Html.RenderPartial("_EditSC");
+        }
+    </div>
+
+    <div ng-show="view">
+        @{ Html.RenderPartial("_View"); }
+    </div>
+</div>
+
+<script src="~/js/order/search.js"></script>

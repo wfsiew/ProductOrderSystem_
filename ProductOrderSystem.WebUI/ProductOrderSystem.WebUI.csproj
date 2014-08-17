@@ -1,0 +1,525 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{334189C6-D3DE-4BE5-9C3E-F273E202D32B}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PorductOrderSystem.WebUI</RootNamespace>
+    <AssemblyName>PorductOrderSystem.WebUI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActionMailer.Net">
+      <HintPath>..\packages\ActionMailer.0.7.4\lib\Net40\ActionMailer.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="ActionMailer.Net.Mvc">
+      <HintPath>..\packages\ActionMailer.0.7.4\lib\Net40\ActionMailer.Net.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharpJExcel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\CSharpJExcel.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core">
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.3.4.13329\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core.UI">
+      <HintPath>..\packages\DotNetOpenAuth.Core.UI.4.3.4.13329\lib\net40-full\DotNetOpenAuth.Core.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.InfoCard">
+      <HintPath>..\packages\DotNetOpenAuth.InfoCard.4.3.4.13329\lib\net40-full\DotNetOpenAuth.InfoCard.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.InfoCard.UI">
+      <HintPath>..\packages\DotNetOpenAuth.InfoCard.UI.4.3.4.13329\lib\net40-full\DotNetOpenAuth.InfoCard.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Common">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Common.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OAuth.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.ServiceProvider">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.ServiceProvider.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OAuth.ServiceProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.Core.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OAuth2.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.AuthorizationServer">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.AuthorizationServer.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OAuth2.AuthorizationServer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.Client">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.Client.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OAuth2.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.Client.UI">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.Client.UI.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OAuth2.Client.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.ClientAuthorization">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.ClientAuthorization.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OAuth2.ClientAuthorization.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.ResourceServer">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth2.ResourceServer.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OAuth2.ResourceServer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.Provider">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Provider.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OpenId.Provider.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.Provider.UI">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Provider.UI.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OpenId.Provider.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty.UI">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.UI.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.UI">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.UI.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OpenId.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenIdInfoCard.UI">
+      <HintPath>..\packages\DotNetOpenAuth.OpenIdInfoCard.UI.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OpenIdInfoCard.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenIdOAuth">
+      <HintPath>..\packages\DotNetOpenAuth.OpenIdOAuth.4.3.4.13329\lib\net40-full\DotNetOpenAuth.OpenIdOAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=3.1.3.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.AccessControl, Version=2.2.0.0, Culture=neutral, PublicKeyToken=b4b8eb9a7afc8328, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.GData.AccessControl.2.2.0.0\lib\Google.GData.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Apps, Version=2.2.0.0, Culture=neutral, PublicKeyToken=e6feebfe441b89cb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.GData.Apps.2.2.0.0\lib\Google.GData.Apps.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Calendar, Version=2.2.0.0, Culture=neutral, PublicKeyToken=aa6748391206b888, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.GData.Calendar.2.2.0.0\lib\Google.GData.Calendar.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Client, Version=2.2.0.0, Culture=neutral, PublicKeyToken=04a59ca9b0273830, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.GData.Client.2.2.0.0\lib\Google.GData.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Contacts, Version=2.2.0.0, Culture=neutral, PublicKeyToken=7e065189dd4b982f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.GData.Contacts.2.2.0.0\lib\Google.GData.Contacts.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Documents, Version=2.2.0.0, Culture=neutral, PublicKeyToken=e4daaad656f19bb9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.GData.Documents.2.2.0.0\lib\Google.GData.Documents.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Extensions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=0b4c5df2ebf20876, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.GData.Extensions.2.2.0.0\lib\Google.GData.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.0.0.7\lib\net40-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\IAuthProvider.cs" />
+    <Compile Include="Abstract\IOrderRepository.cs" />
+    <Compile Include="Abstract\IUserRepository.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Areas\Fibre\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Fibre\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Fibre\FibreAreaRegistration.cs" />
+    <Compile Include="Areas\Fibre\Models\OrderBaseModel.cs" />
+    <Compile Include="Areas\Fibre\Models\OrderCreateModel.cs" />
+    <Compile Include="Areas\Fibre\Models\OrderEditACModel.cs" />
+    <Compile Include="Areas\Fibre\Models\OrderEditBaseViewModel.cs" />
+    <Compile Include="Areas\Fibre\Models\OrderEditCCModel.cs" />
+    <Compile Include="Areas\Fibre\Models\OrderEditFLModel.cs" />
+    <Compile Include="Areas\Fibre\Models\OrderEditInstallModel.cs" />
+    <Compile Include="Areas\Fibre\Models\OrderEditSCModel.cs" />
+    <Compile Include="Areas\Fibre\Models\OrderSearchModel.cs" />
+    <Compile Include="Binders\LogonUserBinder.cs" />
+    <Compile Include="Concrete\FormsAuthProvider.cs" />
+    <Compile Include="Concrete\OrderRepository.cs" />
+    <Compile Include="Concrete\UserRepository.cs" />
+    <Compile Include="Controllers\AuditController.cs" />
+    <Compile Include="Controllers\OrderMailController.cs" />
+    <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Context\FibreContext.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Utils.cs" />
+    <Compile Include="HtmlHelpers\AttrHelpers.cs" />
+    <Compile Include="Infrastructure\CustomMembershipProvider.cs" />
+    <Compile Include="Infrastructure\CustomMembershipUser.cs" />
+    <Compile Include="Infrastructure\CustomRoleProvider.cs" />
+    <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\AssignedRoleData.cs" />
+    <Compile Include="Models\EmailInfo.cs" />
+    <Compile Include="Models\Pager.cs" />
+    <Compile Include="Models\UIException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Areas\Fibre\js\order\create.js" />
+    <Content Include="Areas\Fibre\js\order\details.js" />
+    <Content Include="Areas\Fibre\js\order\detailsac.js" />
+    <Content Include="Areas\Fibre\js\order\detailscc.js" />
+    <Content Include="Areas\Fibre\js\order\detailsfl.js" />
+    <Content Include="Areas\Fibre\js\order\detailsinstall.js" />
+    <Content Include="Areas\Fibre\js\order\editac.js" />
+    <Content Include="Areas\Fibre\js\order\editcc.js" />
+    <Content Include="Areas\Fibre\js\order\editfl.js" />
+    <Content Include="Areas\Fibre\js\order\editinstall.js" />
+    <Content Include="Areas\Fibre\js\order\editsc.js" />
+    <Content Include="Areas\Fibre\js\order\search.js" />
+    <Content Include="Areas\Fibre\js\order\view.js" />
+    <Content Include="css\app.css" />
+    <Content Include="css\bootstrap-3\css\bootstrap-theme.css" />
+    <Content Include="css\bootstrap-3\css\bootstrap-theme.min.css" />
+    <Content Include="css\bootstrap-3\css\bootstrap.css" />
+    <Content Include="css\bootstrap-3\css\bootstrap.min.css" />
+    <Content Include="css\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="css\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="css\bootstrap\css\bootstrap-timepicker.css" />
+    <Content Include="css\bootstrap\css\bootstrap.css" />
+    <Content Include="css\bootstrap\css\bootstrap.min.css" />
+    <Content Include="css\bootstrap\css\jquery.fileupload-ui.css" />
+    <Content Include="css\bootstrap\css\select2.css" />
+    <Content Include="css\bootstrap\css\select2.png" />
+    <Content Include="css\bootstrap-3\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="css\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="css\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="css\images\favicon.png" />
+    <Content Include="css\lib\loading-bar.css" />
+    <Content Include="css\lib\toastr-icon.png" />
+    <Content Include="css\lib\toastr.min.css" />
+    <Content Include="productordersystem.xml" />
+    <Content Include="js\audit\index.js" />
+    <Content Include="js\home\index.js" />
+    <Content Include="js\lib\angular-animate.min.js" />
+    <Content Include="js\lib\angular-sanitize.min.js" />
+    <Content Include="js\lib\bootbox.min.js" />
+    <Content Include="js\lib\loading-bar.js" />
+    <Content Include="js\lib\toastr.min.js" />
+    <Content Include="Global.asax" />
+    <Content Include="js\app.js" />
+    <Content Include="js\controllers.js" />
+    <Content Include="js\directives.js" />
+    <Content Include="js\filters.js" />
+    <Content Include="js\lib\angular-route.min.js" />
+    <Content Include="js\lib\angular-strap.min.js" />
+    <Content Include="js\lib\angular.min.js" />
+    <Content Include="js\lib\bootstrap-timepicker.js" />
+    <Content Include="js\lib\bootstrap.min.js" />
+    <Content Include="js\lib\jquery-1.10.2.min.js" />
+    <Content Include="js\lib\jquery-ui.min.js" />
+    <Content Include="js\lib\jquery.blockUI.js" />
+    <Content Include="js\lib\jquery.fileupload-angular.js" />
+    <Content Include="js\lib\jquery.fileupload.js" />
+    <Content Include="js\lib\select2.js" />
+    <Content Include="js\lib\select2.min.js" />
+    <Content Include="js\lib\ui-bootstrap-tpls-0.8.0.min.js" />
+    <Content Include="js\lib\ui-utils.min.js" />
+    <Content Include="js\lib\underscore-min.js" />
+    <Content Include="js\order\create.js" />
+    <Content Include="js\order\details.js" />
+    <Content Include="js\order\detailsac.js" />
+    <Content Include="js\order\detailscc.js" />
+    <Content Include="js\order\detailsfl.js" />
+    <Content Include="js\order\detailsinstall.js" />
+    <Content Include="js\order\editac.js" />
+    <Content Include="js\order\editcc.js" />
+    <Content Include="js\order\editfl.js" />
+    <Content Include="js\order\editinstall.js" />
+    <Content Include="js\order\editsc.js" />
+    <Content Include="js\order\search.js" />
+    <Content Include="js\order\view.js" />
+    <Content Include="js\route.js" />
+    <Content Include="js\services.js" />
+    <Content Include="js\user\controller.js" />
+    <Content Include="js\utils.js" />
+    <Content Include="lib\CSharpJExcel.dll" />
+    <Content Include="lib\EPPlus.dll" />
+    <Content Include="lib\EPPlus.XML" />
+    <Content Include="ngview\home\index.html" />
+    <Content Include="ngview\order\confirm_delete.html" />
+    <Content Include="ngview\order\form.html" />
+    <Content Include="ngview\shared\alert.html" />
+    <Content Include="ngview\shared\info.html" />
+    <Content Include="ngview\shared\success.html" />
+    <Content Include="ngview\user\confirm_delete.html" />
+    <Content Include="ngview\user\form.html" />
+    <Content Include="css\lib\toastr.less" />
+    <Content Include="js\lib\toastr.min.js.map" />
+    <Content Include="css\bootstrap-3\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="css\bootstrap-3\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="css\bootstrap-3\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="js\lib\angular-animate.min.js.map" />
+    <Content Include="js\lib\angular-route.min.js.map" />
+    <Content Include="js\lib\angular.min.js.map" />
+    <Content Include="doc\Activity Log Format.xlsx" />
+    <Content Include="js\lib\angular-sanitize.min.js.map" />
+    <Content Include="doc\Fibre+ Process Specs %28with comments%29HC_V5a %28Tham%29.xlsx" />
+    <Content Include="Areas\Fibre\Views\Web.config" />
+    <None Include="js\lib\jquery.validate-vsdoc.js" />
+    <Content Include="js\lib\jquery.validate.js" />
+    <Content Include="js\lib\jquery.validate.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\_LayoutEmpty.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\Create.cshtml" />
+    <Content Include="Views\User\_List.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\Search.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\_List.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\_EditSC.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\_EditFL.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\_EditAC.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\_EditInstall.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\_EditAdmin.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\_EditCC.cshtml" />
+    <Content Include="Views\OrderMail\OrderCreatedNotification.html.cshtml" />
+    <Content Include="Views\OrderMail\_OrderCreateInfo.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsCC.cshtml" />
+    <Content Include="Views\OrderMail\OrderUpdatedNotification.html.cshtml" />
+    <Content Include="Views\OrderMail\_OrderUpdateInfo.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\Details.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsFL.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsAC.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\_DetailsSC.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\_DetailsFL.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\_DetailsAC.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\_DetailsInstall.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\_DetailsCC.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsInstall.cshtml" />
+    <Content Include="Views\OrderMail\OrderInstallDateNotification.html.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsInstallResubmit.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsCCResubmit.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsFLResubmit.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsACResubmit.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsInstallResubmit1.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsInstallWithdraw.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsCCWithdraw.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsFLWithdraw.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsACWithdraw.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsCCTerminate.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsFLTerminate.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsACTerminate.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\DetailsInstallTerminate.cshtml" />
+    <None Include="Properties\PublishProfiles\fibresystem.pubxml" />
+    <Content Include="Web.prod.config" />
+    <Content Include="Web.prod.Debug.config">
+      <DependentUpon>Web.prod.config</DependentUpon>
+    </Content>
+    <Content Include="Web.prod.Release.config">
+      <DependentUpon>Web.prod.config</DependentUpon>
+    </Content>
+    <Content Include="Areas\Fibre\Views\Order\_View.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\_ListOverdue.cshtml" />
+    <Content Include="Views\Audit\Index.cshtml" />
+    <Content Include="Areas\Fibre\Views\Order\_OrderFileJS.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Fibre\Views\Shared\" />
+    <Folder Include="Views\Order\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="doc\Fibre+ Process Specs %28with comments%29HC_V5 %28Tham%29.xlsx" />
+    <Content Include="doc\Portal Page details.xlsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Header.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_LeftMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_TabMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProductOrderSystem.Domain\ProductOrderSystem.Domain.csproj">
+      <Project>{a6a55146-ffe2-4689-94d4-fae4d86b8b41}</Project>
+      <Name>ProductOrderSystem.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoogleAppHelper\GoogleAppHelper.csproj">
+      <Project>{2225420c-c949-417a-8bd4-ead27b330985}</Project>
+      <Name>GoogleAppHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\LogOff.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>10904</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8383/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

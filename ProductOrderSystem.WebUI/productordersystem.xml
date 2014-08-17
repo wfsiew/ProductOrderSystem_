@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?> 	
+<ApplicationManifest xmlns="http://schemas.google.com/ApplicationManifest/2009"> 	
+<Name>Fibre System</Name> 	
+<Description>Demonstrates a simple Google Apps Marketplace application</Description> 	
+	
+<!-- Administrators and users will be sent to this URL for application support --> 	
+<Support> 	
+<Link rel="support" href="http://www.googlecodesamples.com/helloworld" /> 	
+</Support> 	
+	
+<!-- Show this link in Google's universal navigation for all users --> 	
+<Extension id="navLink" type="link"> 	
+<Name>Fibre System</Name> 	
+<Url>http://login.redtone.com/ProductOrderSystem/Account/LogOn?from=google&amp;domain=${DOMAIN_NAME}</Url> 	
+<Scope ref="calendarAPI"/> 	
+<Scope ref="userProvisioningAPI"/> 	
+<Scope ref="groupProvisioningAPI"/> 	
+<Scope ref="docsAPI"/> 	
+<Scope ref="spreadsheetAPI"/> 	
+</Extension> 	
+	
+<!-- Declare our OpenID realm so our app is white listed --> 	
+<Extension id="realm" type="openIdRealm"> 	
+<Url>http://login.redtone.com/</Url> 	
+</Extension> 	
+	
+<!-- Need access to the Calendar API --> 	
+<Scope id="calendarAPI"> 	
+<Url>https://www.google.com/calendar/feeds/</Url> 	
+<Reason>This app displays the user's next upcoming Google Calendar appointment.</Reason> 	
+</Scope> 	
+<Scope id="spreadsheetAPI"> 	
+<Url>https://spreadsheets.google.com/feeds/</Url> 	
+<Reason>To generate and read the spreadsheet.</Reason> 	
+</Scope> 	
+<Scope id="docsAPI"> 	
+<Url>https://docs.google.com/feeds/</Url> 	
+<Reason>To upload and read the site.</Reason> 	
+</Scope> 	
+<Scope id="userProvisioningAPI"> 	
+<Url>https://apps-apis.google.com/a/feeds/user/#readonly</Url> 	
+<Reason>Readonly access to user list for user assignment</Reason> 	
+</Scope> 	
+<Scope id="groupProvisioningAPI"> 	
+<Url>https://apps-apis.google.com/a/feeds/group/#readonly</Url> 	
+<Reason>Readonly access to group list for user assignment</Reason> 	
+</Scope> 	
+</ApplicationManifest>

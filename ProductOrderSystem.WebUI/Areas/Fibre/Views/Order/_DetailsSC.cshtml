@@ -1,0 +1,177 @@
+﻿@model ProductOrderSystem.Domain.Fibre.Models.Order
+
+@using ProductOrderSystem.WebUI.Helpers
+
+<legend>Order</legend>
+<input id="ID" name="ID" type="hidden" value="@Model.ID" />
+
+<ul class="nav nav-tabs nav-stacked">
+    <li>
+        <a ng-click="isCollapsedSC = !isCollapsedSC">Sales Coordinator <i ng-class="getCollapseCss(isCollapsedSC)"></i></a>
+    </li>
+</ul>
+<div collapse="isCollapsedSC">
+    <div class="control-group">
+        <label class="control-label">Last Updated By</label>
+        <div class="controls">
+            @Model.User.Name&nbsp;@Utils.GetDateStr(Model.LastUpdateDatetime)&nbsp;@Utils.GetTimeStr(Model.LastUpdateDatetime)
+        </div>
+    </div>
+
+    <h4>Sales Person Information</h4>
+
+    <div class="control-group">
+        <label class="control-label">Name</label>
+        <div class="controls">
+            @Model.SalesPerson.Name
+        </div>
+    </div>
+
+    <h4>Order Information</h4>
+
+    <div class="control-group">
+        <label class="control-label">Order Type</label>
+        <div class="controls">
+            @Model.OrderType.Name
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Status</label>
+        <div class="controls">
+            @ViewBag.StatusSC
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Received Date</label>
+        <div class="controls">
+            @Utils.GetDateStr(Model.ReceivedDatetime)
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Received Time</label>
+        <div class="controls">
+            @Utils.GetTimeStr(Model.ReceivedDatetime)
+        </div>
+    </div>
+
+    <h4>Customer Information</h4>
+
+    <div class="control-group">
+        <label class="control-label">Customer Name</label>
+        <div class="controls">
+            @Model.CustName
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Customer Address</label>
+        <div class="controls">
+            @Html.Raw(Utils.FormatHtml(Model.CustAddr))
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Customer ID</label>
+        <div class="controls">
+            @Model.CustID
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Contact Person Name</label>
+        <div class="controls">
+            @Model.ContactPerson
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Contact Person No.</label>
+        <div class="controls">
+            @Model.ContactPersonNo
+        </div>
+    </div>
+
+    @if (Model.OrderTypeID != 4)
+    {
+        <h4>New &amp; Variation Order Only</h4>
+
+        <div class="control-group">
+            <label class="control-label"></label>
+            <div class="controls">
+                @if (Model.OrderTypeID == 1 || Model.OrderTypeID == 2)
+                {
+                    <label class="checkbox inline">
+                        <i class="@(Model.IsCoverageAvailable ? "icon-ok" : "icon-remove")"></i> Coverage Area Available
+                    </label>
+                    <label class="checkbox inline">
+                        <i class="@(Model.IsDemandList ? "icon-ok" : "icon-remove")"></i> Demand List
+                    </label>
+                }
+
+                @if (Model.OrderTypeID == 1 || Model.OrderTypeID == 2 || Model.OrderTypeID == 3)
+                {
+                    <label class="checkbox inline">
+                        <i class="@(Model.IsReqFixedLine ? "icon-ok" : "icon-remove")"></i> Request Fixed Line
+                    </label>
+                    <label class="checkbox inline">
+                        <i class="@(Model.IsCeoApproved ? "icon-ok" : "icon-remove")"></i> CEO Approved
+                    </label>
+                }
+
+                @if (Model.OrderTypeID == 1 || Model.OrderTypeID == 2)
+                {
+                    <label class="checkbox inline">
+                        <i class="@(Model.IsWithdrawFixedLineReq ? "icon-ok" : "icon-remove")"></i> Withdraw Fixed Line Request
+                    </label>
+                }
+                
+                @if (Model.OrderTypeID == 3)
+                {
+                    <label class="checkbox inline">
+                        <i class="@(Model.IsServiceUpgrade ? "icon-ok" : "icon-remove")"></i> Service Upgrade
+                    </label>
+                }
+            </div>
+        </div>
+
+        if (Model.OrderTypeID == 1 || Model.OrderTypeID == 2)
+        {
+            <div class="control-group">
+                <label class="control-label">Reason For Withdrawal</label>
+                <div class="controls">
+                    @Html.Raw(Utils.FormatHtml(Model.ReasonWithdraw))
+                </div>
+            </div>
+        }
+    }
+
+    <h4>Installation / Removal</h4>
+
+    <div class="control-group">
+        <label class="control-label">KIV</label>
+        <div class="controls">
+            <i class="@(Model.IsKIV ? "icon-ok" : "icon-remove")"></i>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Booked Installation / Removal Date</label>
+        <div class="controls">
+            @Utils.GetDateStr(Model.InstallDatetime)
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Booked Installation / Removal Time</label>
+        <div class="controls">
+            @Utils.GetTimeStr(Model.InstallDatetime)
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">BTU Installed</label>
+        <div class="controls">
+            <i class="@(Model.IsBTUInstalled ? "icon-ok" : "icon-remove")"></i>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">Comments</label>
+        <div class="controls">
+            @Html.Raw(Utils.FormatHtml(Model.Comments))
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿@model ProductOrderSystem.WebUI.Models.LogOnModel
+
+@{
+    ViewBag.Title = "Log On";
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+}
+
+<h2>Log On</h2>
+<p class="help-block">
+    Please enter your user name and password. 
+</p>
+
+@Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.", new { @class = "alert alert-error" })
+
+@using (Html.BeginForm())
+{
+    <div class="well">
+        <fieldset>
+            <legend>Account Information</legend>
+
+            @Html.LabelFor(m => m.UserName)
+            @Html.TextBoxFor(m => m.UserName, new { placeholder = "Email", @class = "input-xlarge" })
+            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "label label-important" })
+            <p>
+                <button type="submit" class="btn btn-primary">Log On</button>
+            </p>
+        </fieldset>
+    </div>
+}
+
+@section Scripts {
+    <script src="@Url.Content("~/js/lib/jquery.validate.min.js")" type="text/javascript"></script>
+}

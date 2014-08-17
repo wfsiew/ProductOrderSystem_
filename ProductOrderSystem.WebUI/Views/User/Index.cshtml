@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "User Management";
+}
+
+<div ng-controller="UserCtrl">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                @{
+                    if (ViewBag.IsSuperAdmin)
+                    {
+                        <li><a href ng-click="addNew()"><i class="icon-plus"></i> New User</a></li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+    <form class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label"></label>
+            <div class="controls">
+                <div class="input-append">
+                    <input id="SearchString" name="SearchString" type="text" placeholder="Search" x-webkit-speech="x-webkit-speech"
+                           ng-model="SearchString" ui-keypress="{13: 'search()'}" />
+                    <button ng-click="search()" type="button" class="btn btn-default"><i class="icon-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    @{ Html.RenderPartial("_List"); }
+</div>
+
+<script src="~/js/user/controller.js"></script>

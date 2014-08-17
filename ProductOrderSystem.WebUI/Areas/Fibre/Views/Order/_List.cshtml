@@ -1,0 +1,173 @@
+﻿@using ProductOrderSystem.WebUI.Helpers
+
+@{
+    int colspan = 17;
+}
+
+<div class="alert alert-info" ng-show="list != null && list.length < 1">
+    <strong>No records found.</strong>
+</div>
+<table class="table table-striped table-hover table-condensed" ng-show="list != null && list.length > 0">
+    <thead>
+        <tr class="well">
+            <th class="nowrap">
+                <a href ng-click="sort('OrderID')">Order ID <i ng-class="getSortCss('OrderID')"></i></a>
+            </th>
+            <th></th>
+            <th>Status</th>
+            <th class="nowrap">
+                <a href ng-click="sort('SalesPerson')">Sales Person <i ng-class="getSortCss('SalesPerson')"></i></a>
+            </th>
+            <th class="nowrap">
+                <a href ng-click="sort('OrderType')">Order Type <i ng-class="getSortCss('OrderType')"></i></a>
+            </th>
+            <th class="nowrap">
+                <a href ng-click="sort('ReceivedDatetime')">Received Date <i ng-class="getSortCss('ReceivedDatetime')"></i></a>
+            </th>
+            <th class="nowrap">
+                <a href ng-click="sort('InstallDatetime')">Install Date <i ng-class="getSortCss('InstallDatetime')"></i></a>
+            </th>
+            <th class="nowrap">
+                <a href ng-click="sort('CustID')">Customer ID <i ng-class="getSortCss('CustID')"></i></a>
+            </th>
+            <th class="nowrap">
+                <a href ng-click="sort('CustName')">Customer Name <i ng-class="getSortCss('CustName')"></i></a>
+            </th>
+            <th class="nowrap">
+                <a href ng-click="sort('CustAddr')">Address <i ng-class="getSortCss('CustAddr')"></i></a>
+            </th>
+            <th class="nowrap">
+                <a href ng-click="sort('ContactPerson')">Contact Person <i ng-class="getSortCss('ContactPerson')"></i></a>
+            </th>
+            <th class="nowrap">
+                <a href ng-click="sort('IsCoverageAvailable')">Coverage <i ng-class="getSortCss('IsCoverageAvailable')"></i></a>
+            </th>
+            <th class="nowrap">
+                <a href ng-click="sort('IsDemandList')">Demand List <i ng-class="getSortCss('IsDemandList')"></i></a>
+            </th>
+            <th class="nowrap">
+                <a href ng-click="sort('IsReqFixedLine')">Request Fixed Line <i ng-class="getSortCss('IsReqFixedLine')"></i></a>
+            </th>
+            <th class="nowrap">
+                <a href ng-click="sort('IsCeoApproved')">Ceo Approved <i ng-class="getSortCss('IsCeoApproved')"></i></a>
+            </th>
+            <th class="nowrap">
+                <a href ng-click="sort('IsWithdrawFixedLineReq')">Withdraw Fixed Line request <i ng-class="getSortCss('IsWithdrawFixedLineReq')"></i></a>
+            </th>
+            <th class="nowrap">
+                <a href ng-click="sort('IsServiceUpgrade')">Service Upgrade <i ng-class="getSortCss('IsServiceUpgrade')"></i></a>
+            </th>
+            <th class="nowrap">
+                <a href ng-click="sort('Comments')">Comments <i ng-class="getSortCss('Comments')"></i></a>
+            </th>
+            @if (ViewBag.Role == Constants.CREDIT_CONTROL)
+            {
+                colspan = 18;
+                <th>
+                    <a href ng-click="sort('RemarksCC')">Remarks <i ng-class="getSortCss('RemarksCC')"></i></a>
+                </th>
+            }
+
+            else if (ViewBag.Role == Constants.FIXED_LINE)
+            {
+                colspan = 18;
+                <th>
+                    <a href ng-click="sort('RemarksFL')">Remarks <i ng-class="getSortCss('RemarksFL')"></i></a>
+                </th>
+            }
+
+            else if (ViewBag.Role == Constants.BILLING)
+            {
+                colspan = 18;
+                <th>
+                    <a href ng-click="sort('RemarksAC')">Remarks <i ng-class="getSortCss('RemarksAC')"></i></a>
+                </th>
+            }
+
+            else if (ViewBag.Role == Constants.SALES_COORDINATOR || ViewBag.Role == Constants.SUPER_ADMIN)
+            {
+                colspan = 21;
+                <th class="nowrap">
+                    <a href ng-click="sort('RemarksCC')">Remarks (CC) <i ng-class="getSortCss('RemarksCC')"></i></a>
+                </th>
+                <th class="nowrap">
+                    <a href ng-click="sort('RemarksFL')">Remarks (FL) <i ng-class="getSortCss('RemarksFL')"></i></a>
+                </th>
+                <th class="nowrap">
+                    <a href ng-click="sort('RemarksAC')">Remarks (AC) <i ng-class="getSortCss('RemarksAC')"></i></a>
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="o in list" ng-class="getRowCss(o)">
+            <td class="tdRight">{{o.ID}}</td>
+            <td class="menuitem">
+                <div>
+                    <a href tooltip="View" ng-click="viewItem(o)" tooltip-trigger="mouseenter" tooltip-placement="bottom"><i class="icon-tasks"></i></a>
+                    <a href tooltip="Edit" ng-click="editItem(o)" tooltip-trigger="mouseenter" tooltip-placement="bottom"><i class="icon-pencil"></i></a>
+                    <a href ng-click="removeItem(o)" tooltip="Delete" tooltip-trigger="mouseenter" tooltip-placement="bottom"><i class="icon-trash"></i></a>
+                </div>
+            </td>
+            <td>{{o.Status}}</td>
+            <td class="nowrap">{{o.SalesPersonName}}</td>
+            <td>{{o.OrderTypeName}}</td>
+            <td class="nowrap">{{o.ReceivedDatetime | datefilter | date:'yyyy-MM-dd'}}</td>
+            <td class="nowrap">{{o.InstallDatetime | datefilter | date:'yyyy-MM-dd'}}</td>
+            <td>{{o.CustID}}</td>
+            <td class="nowrap">{{o.CustName}}</td>
+            <td><span class="nowrap" ng-bind-html="o.CustAddr"></span></td>
+            <td class="nowrap">{{o.ContactPerson}}</td>
+            <td><i ng-class="getYesNoIcon(o.IsCoverageAvailable)"></i></td>
+            <td><i ng-class="getYesNoIcon(o.IsDemandList)"></i></td>
+            <td><i ng-class="getYesNoIcon(o.IsReqFixedLine)"></i></td>
+            <td><i ng-class="getYesNoIcon(o.IsCeoApproved)"></i></td>
+            <td><i ng-class="getYesNoIcon(o.IsWithdrawFixedLineReq)"></i></td>
+            <td><i ng-class="getYesNoIcon(o.IsServiceUpgrade)"></i></td>
+            <td><span class="nowrap" ng-bind-html="o.Comments"></span></td>
+            @if (ViewBag.Role == Constants.CREDIT_CONTROL)
+            {
+                <td><span class="nowrap" ng-bind-html="o.RemarksCC"></span></td>
+            }
+
+            else if (ViewBag.Role == Constants.FIXED_LINE)
+            {
+                <td><span class="nowrap" ng-bind-html="o.RemarksFL"></span></td>
+            }
+
+            else if (ViewBag.Role == Constants.BILLING)
+            {
+                <td><span class="nowrap" ng-bind-html="o.RemarksAC"></span></td>
+            }
+
+            else if (ViewBag.Role == Constants.SALES_COORDINATOR || ViewBag.Role == Constants.SUPER_ADMIN)
+            {
+                <td><span class="nowrap" ng-bind-html="o.RemarksCC"></span></td>
+                <td><span class="nowrap" ng-bind-html="o.RemarksFL"></span></td>
+                <td><span class="nowrap" ng-bind-html="o.RemarksAC"></span></td>
+            }
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="@colspan">
+                <div class="pull-left">
+                    <pagination boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                                page="pager.PageNum"
+                                total-items="pager.Total"
+                                items-per-page="pager.PageSize"
+                                max-size="pager.PageSize"
+                                on-select-page="gotoPage(page)">
+                    </pagination>
+                </div>
+                <div class="pull-right">
+                    <div class="pagination">
+                        <ul>
+                            <li>{{pager.ItemMessage}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tfoot>
+</table>

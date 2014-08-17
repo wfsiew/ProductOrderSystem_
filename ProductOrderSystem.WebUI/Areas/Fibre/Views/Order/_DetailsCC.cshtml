@@ -1,0 +1,38 @@
+﻿@model ProductOrderSystem.Domain.Fibre.Models.Order
+
+@using ProductOrderSystem.WebUI.Helpers
+
+<ul class="nav nav-tabs nav-stacked">
+    <li>
+        <a ng-click="isCollapsedCC = !isCollapsedCC">Credit Control <i ng-class="getCollapseCss(isCollapsedCC)"></i></a>
+    </li>
+</ul>
+<div collapse="isCollapsedCC">
+    <div class="control-group">
+        <label class="control-label">Status</label>
+        <div class="controls">
+            @ViewBag.StatusCC
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Reason for Rejection</label>
+        <div class="controls">
+            @Html.Raw(Utils.FormatHtml(Model.ReasonRejectCC))
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Remarks</label>
+        <div class="controls">
+            @Html.Raw(Utils.FormatHtml(Model.RemarksCC))
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Last Updated By</label>
+        <div class="controls">
+            @if (Model.CCUser != null && Model.LastUpdateDatetimeCC != null)
+            {
+                @Model.CCUser.Name@:&nbsp;@Utils.GetDateStr(Model.LastUpdateDatetimeCC)&nbsp;@Utils.GetTimeStr(Model.LastUpdateDatetimeCC)
+            }
+        </div>
+    </div>
+</div>

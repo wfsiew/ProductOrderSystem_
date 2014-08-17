@@ -1,0 +1,147 @@
+﻿@model ProductOrderSystem.Domain.Models.Order
+
+@using ProductOrderSystem.WebUI.Helpers
+
+<fieldset>
+    <legend>Credit Control</legend>
+
+    <table>
+        <tbody>
+            <tr>
+                <td class="tdRight">Status : </td>
+                <td>@ViewData["StatusCC"].ToString()</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Reason for Rejection : </td>
+                <td>@Html.Raw(Utils.FormatHtml(Model.ReasonRejectCC))</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Remarks : </td>
+                <td>@Html.Raw(Utils.FormatHtml(Model.RemarksCC))</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Last Updated By : </td>
+                <td>
+                    @if (Model.CCUser != null && Model.LastUpdateDatetimeCC != null)
+                    {
+                        @Model.CCUser.Name@:&nbsp;@Utils.GetDateStr(Model.LastUpdateDatetimeCC)&nbsp;@Utils.GetTimeStr(Model.LastUpdateDatetimeCC)
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</fieldset>
+
+<fieldset>
+    <legend>Fixed Line</legend>
+
+    <table>
+        <tbody>
+            <tr>
+                <td class="tdRight">Status : </td>
+                <td>@ViewData["StatusFL"].ToString()</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Reason for Rejection : </td>
+                <td>@Html.Raw(Utils.FormatHtml(Model.ReasonRejectFL))</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Allocated Fixed Line No : </td>
+                <td>@Model.AllocatedFixedLineNo</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Remarks : </td>
+                <td>@Html.Raw(Utils.FormatHtml(Model.RemarksFL))</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Last Updated By : </td>
+                <td>
+                    @if (Model.FLUser != null && Model.LastUpdateDatetimeFL != null)
+                    {
+                        @Model.FLUser.Name@:&nbsp;@Utils.GetDateStr(Model.LastUpdateDatetimeFL)&nbsp;@Utils.GetTimeStr(Model.LastUpdateDatetimeFL)
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</fieldset>
+
+<fieldset>
+    <legend>Account Creation</legend>
+
+    <table>
+        <tbody>
+            <tr>
+                <td class="tdRight">Status : </td>
+                <td>@ViewData["StatusAC"].ToString()</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Reason for Rejection : </td>
+                <td>@Html.Raw(Utils.FormatHtml(Model.ReasonRejectAC))</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Remarks : </td>
+                <td>@Html.Raw(Utils.FormatHtml(Model.RemarksAC))</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Form Received : </td>
+                <td>@Utils.GetYesNo(Model.IsFormReceived)</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Last Updated By : </td>
+                <td>
+                    @if (Model.ACUser != null && Model.LastUpdateDatetimeAC != null)
+                    {
+                        @Model.ACUser.Name@:&nbsp;@Utils.GetDateStr(Model.LastUpdateDatetimeAC)&nbsp;@Utils.GetTimeStr(Model.LastUpdateDatetimeAC)
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</fieldset>
+
+<fieldset>
+    <legend>Installation</legend>
+
+    <table>
+        <tbody>
+            <tr>
+                <td class="tdRight">Status : </td>
+                <td>@ViewData["StatusInstall"].ToString()</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Reason for Rejection : </td>
+                <td>@Html.Raw(Utils.FormatHtml(Model.ReasonRejectInstall))</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Installation Date : </td>
+                <td>@Utils.GetDateStr(Model.InstallDatetime)</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Installation Time : </td>
+                <td>@Utils.GetTimeStr(Model.InstallDatetime)</td>
+            </tr>
+            <tr>
+                <td class="tdRight">BTU ID : </td>
+                <td>@Model.BTUID</td>
+            </tr>
+            <tr>
+                <td class="tdRight">BTU Installed ? </td>
+                <td>@Model.BTUInstalled</td>
+            </tr>
+            <tr>
+                <td class="tdRight">SIP Port : </td>
+                <td>@Model.SIPPort</td>
+            </tr>
+            <tr>
+                <td class="tdRight">Last Updated By : </td>
+                <td>
+                    @if (Model.InstallUser != null && Model.LastUpdateDatetimeInstall != null)
+                    {
+                        @Model.InstallUser.Name@:&nbsp;@Utils.GetDateStr(Model.LastUpdateDatetimeInstall)&nbsp;@Utils.GetTimeStr(Model.LastUpdateDatetimeInstall)
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</fieldset>

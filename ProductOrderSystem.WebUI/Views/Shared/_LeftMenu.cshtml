@@ -1,0 +1,13 @@
+﻿@using ProductOrderSystem.WebUI.Constants
+
+<ul class="nav nav-pills nav-stacked affix">
+    <li class="@(ViewBag.Menu == Constants.CREATE_ORDER ? "active" : null)">
+        <a href="@Url.Action("Create", "Order")"><i class="icon-plus"></i> New Order</a>
+    </li>
+    <li class="@(ViewBag.Menu == Constants.SEARCH_ORDER ? "active" : null)">
+        <a href="@Url.Action("Search", "Order")"><i class="icon-search"></i> Search Orders</a>
+    </li>
+    <li class="@(ViewBag.Menu == Constants.USER_MANAGEMENT ? "active" : null)">
+        <a href="@Url.Action("Search", "User")"><i class="icon-user"></i> User Management</a>
+    </li>
+</ul>

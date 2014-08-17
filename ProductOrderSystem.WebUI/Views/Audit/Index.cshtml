@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Logs";
+}
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<div ng-controller="AuditCtrl">
+    <form name="form" class="form-horizontal well" novalidate ng-submit="formSubmit()">
+        <div class="control-group">
+            <label class="control-label">Specific Date</label>
+            <div class="controls">
+                <div class="control-group input-prepend input-append">
+                    <span class="add-on">From</span>
+                    <input id="DateFrom" name="DateFrom" type="text" class="input-medium"
+                           ng-model="model.DateFrom"
+                           ng-required="true"
+                           datepicker-popup="yyyy-MM-dd"
+                           is-open="openedDateFrom" />
+                    <button type="button" class="btn" ng-click="openDateFrom()"><i class="icon-calendar"></i></button>
+                </div>
+                <div class="control-group input-prepend input-append">
+                    <span class="add-on">To</span>
+                    <input id="DateTo" name="DateTo" type="text" class="input-medium"
+                           ng-model="model.DateTo"
+                           ng-required="true"
+                           datepicker-popup="yyyy-MM-dd"
+                           is-open="openedDateTo" />
+                    <button type="button" class="btn" ng-click="openDateTo()"><i class="icon-calendar"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn btn-primary"><i class="icon-file icon-white"></i> Export</button>
+            </div>
+        </div>
+    </form>
+    <iframe id="exportFrame" style="display: none; width: 0; height: 0"></iframe>
+</div>
+
+<script src="~/js/audit/index.js"></script>

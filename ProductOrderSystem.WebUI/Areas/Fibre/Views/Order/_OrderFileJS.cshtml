@@ -1,0 +1,15 @@
+﻿@using ProductOrderSystem.Domain.Fibre.Models
+
+<script type="text/javascript">
+    var files = [];
+    @{
+        List<OrderFile> l = ViewBag.OrderFiles as List<OrderFile>;
+        if (l != null)
+        {
+            foreach (OrderFile k in l)
+            {
+                @:files.push({ filename: '@k.FileName', url: '@k.GoogleFileUrl', fileID: '@k.ID' });
+            }
+        }
+    }
+</script>

@@ -1,0 +1,99 @@
+﻿@model ProductOrderSystem.Domain.Fibre.Models.Order
+
+@using ProductOrderSystem.WebUI.Helpers
+
+@{
+    ViewBag.Title = "Order Details";
+}
+
+<h2>Order Details</h2>
+
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @TempData["message"]
+    </div>
+}
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<div ng-controller="DetailsCCCtrl">
+    <form id="form" name="form" class="form-horizontal" method="post" action="@Url.Action("DetailsCCTerminate", "Order")">
+        <fieldset>
+            @{ Html.RenderPartial("_DetailsSC", Model); }
+
+            <ul class="nav nav-tabs nav-stacked">
+                <li>
+                    <a ng-click="isCollapsedCC = !isCollapsedCC">Credit Control <i ng-class="getCollapseCss(isCollapsedCC)"></i></a>
+                </li>
+            </ul>
+            <div collapse="isCollapsedCC">
+                <div class="control-group">
+                    <label class="control-label">Status</label>
+                    <div class="controls">
+                        <select id="StatusCC" name="StatusCC" class="input-block-level"
+                                ng-model="StatusCC"
+                                ng-init="initStatusCC(@ViewBag.StatusCC)"
+                                ui-select2>
+                            @foreach (SelectListItem o in ViewBag.StatusTypesCC)
+                            {
+                                <option value="@o.Value">@o.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Reason for Rejection</label>
+                    <div class="controls">
+                        <textarea id="ReasonRejectCC" name="ReasonRejectCC" class="input-block-level"
+                                  placeholder="Reason for Rejection"
+                                  x-webkit-speech="x-webkit-speech"
+                                  ng-model="ReasonRejectCC"
+                                  ng-maxlength="200"
+                                  ng-init="initReasonRejectCC('@Model.ReasonRejectCC')"></textarea>
+                        <span class="label label-important" ng-show="form.ReasonRejectCC.$error.maxlength">The field Reason for Rejection must be a string with a maximum length of 200.</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Remarks</label>
+                    <div class="controls">
+                        <textarea id="RemarksCC" name="RemarksCC" class="input-block-level"
+                                  placeholder="Remarks"
+                                  x-webkit-speech="x-webkit-speech"
+                                  ng-model="RemarksCC"
+                                  ng-maxlength="200"
+                                  ng-init="initRemarksCC('@Model.RemarksCC')"></textarea>
+                        <span class="label label-important" ng-show="form.RemarksCC.$error.maxlength">The field Remarks must be a string with a maximum length of 200.</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Last Updated By</label>
+                    <div class="controls">
+                        @if (Model.CCUser != null && Model.LastUpdateDatetimeCC != null)
+                        {
+                            @Model.CCUser.Name@:&nbsp;@Utils.GetDateStr(Model.LastUpdateDatetimeCC)&nbsp;@Utils.GetTimeStr(Model.LastUpdateDatetimeCC)
+                        }
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="button" class="btn btn-success" ng-click="save()">Save</button>
+                    </div>
+                </div>
+            </div>
+
+            @{ Html.RenderPartial("_DetailsFL", Model); }
+            @{ Html.RenderPartial("_DetailsAC", Model); }
+            @{ Html.RenderPartial("_DetailsInstall", Model); }
+        </fieldset>
+    </form>
+</div>
+
+<script src="~/Areas/Fibre/js/order/detailscc.js"></script>

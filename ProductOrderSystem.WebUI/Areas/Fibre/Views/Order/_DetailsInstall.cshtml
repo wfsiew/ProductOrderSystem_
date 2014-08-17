@@ -1,0 +1,62 @@
+﻿@model ProductOrderSystem.Domain.Fibre.Models.Order
+
+@using ProductOrderSystem.WebUI.Helpers
+
+<ul class="nav nav-tabs nav-stacked">
+    <li>
+        <a ng-click="isCollapsedInstall = !isCollapsedInstall">Installation <i ng-class="getCollapseCss(isCollapsedInstall)"></i></a>
+    </li>
+</ul>
+<div collapse="isCollapsedInstall">
+    <div class="control-group">
+        <label class="control-label">Status</label>
+        <div class="controls">
+            @ViewBag.StatusInstall
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Reason for Rejection</label>
+        <div class="controls">
+            @Html.Raw(Utils.FormatHtml(Model.ReasonRejectInstall))
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Installation Date</label>
+        <div class="controls">
+            @Utils.GetDateStr(Model.InstallDatetime)
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Installation Time</label>
+        <div class="controls">
+            @Utils.GetTimeStr(Model.InstallDatetime)
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">BTU ID</label>
+        <div class="controls">
+            @Model.BTUID
+        </div>
+    </div>
+    <div class="control-group" ng-hide="hideBTUInstalled">
+        <label class="control-label">BTU Installed?</label>
+        <div class="controls">
+            @Model.BTUInstalled
+        </div>
+    </div>
+    <div class="control-group" ng-hide="hideSIPPort">
+        <label class="control-label">SIP Port</label>
+        <div class="controls">
+            @Model.SIPPort
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Last Updated By</label>
+        <div class="controls">
+            @if (Model.InstallUser != null && Model.LastUpdateDatetimeInstall != null)
+            {
+                @Model.InstallUser.Name@:&nbsp;@Utils.GetDateStr(Model.LastUpdateDatetimeInstall)&nbsp;@Utils.GetTimeStr(Model.LastUpdateDatetimeInstall)
+            }
+        </div>
+    </div>
+</div>

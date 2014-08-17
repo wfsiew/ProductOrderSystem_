@@ -1,0 +1,111 @@
+﻿@model ProductOrderSystem.Domain.Fibre.Models.Order
+
+@using ProductOrderSystem.WebUI.Helpers
+
+@{
+    ViewBag.Title = "Order Details";
+}
+
+<h2>Order Details</h2>
+
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @TempData["message"]
+    </div>
+}
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<div ng-controller="DetailsFLCtrl">
+    <form id="form" name="form" class="form-horizontal" method="post" action="@Url.Action("DetailsFLWithdraw", "Order")">
+        <fieldset>
+            @{ Html.RenderPartial("_DetailsSC", Model); }
+            @{ Html.RenderPartial("_DetailsCC", Model); }
+
+            <ul class="nav nav-tabs nav-stacked">
+                <li>
+                    <a ng-click="isCollapsedFL = !isCollapsedFL">Fixed Line <i ng-class="getCollapseCss(isCollapsedFL)"></i></a>
+                </li>
+            </ul>
+            <div collapse="isCollapsedFL">
+                <div class="control-group">
+                    <label class="control-label">Status</label>
+                    <div class="controls">
+                        <select id="StatusFL" name="StatusFL" class="input-block-level"
+                                ng-model="StatusFL"
+                                ng-init="initStatusFL(@ViewBag.StatusFL)"
+                                ui-select2>
+                            @foreach (SelectListItem o in ViewBag.StatusTypesCC)
+                            {
+                                <option value="@o.Value">@o.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Reason for Rejection</label>
+                    <div class="controls">
+                        <textarea id="ReasonRejectFL" name="ReasonRejectFL" class="input-block-level"
+                                  placeholder="Reason for Rejection"
+                                  x-webkit-speech="x-webkit-speech"
+                                  ng-model="ReasonRejectFL"
+                                  ng-maxlength="200"
+                                  ng-init="initReasonRejectFL('@Model.ReasonRejectFL')"></textarea>
+                        <span class="label label-important" ng-show="form.ReasonRejectFL.$error.maxlength">The field Reason for Rejection must be a string with a maximum length of 200.</span>
+                    </div>
+                </div>
+                <div class="control-group" ng-hide="hideAllocatedFixedLineNo">
+                    <label class="control-label">Allocated Fixed Line Number</label>
+                    <div class="controls">
+                        <input id="AllocatedFixedLineNo" name="AllocatedFixedLineNo" type="text"
+                               placeholder="Allocated Fixed Line No."
+                               x-webkit-speech="x-webkit-speech"
+                               ng-model="AllocatedFixedLineNo"
+                               ng-maxlength="30"
+                               ng-init="initAllocatedFixedLineNo('@Model.AllocatedFixedLineNo')" />
+                        <span class="label label-important" ng-show="form.AllocatedFixedLineNo.$error.maxlength">The field Allocated Fixed Line No must be a string with a maximum length of 30.</span>
+                    </div>
+                </div>
+                <div class="control-group" ng-hide="hideRemarksFL">
+                    <label class="control-label">Remarks</label>
+                    <div class="controls">
+                        <textarea id="RemarksFL" name="RemarksFL" class="input-block-level"
+                                  placeholder="Remarks"
+                                  x-webkit-speech="x-webkit-speech"
+                                  ng-model="RemarksFL"
+                                  ng-maxlength="200"
+                                  ng-init="initRemarksFL('@Model.RemarksFL')"></textarea>
+                        <span class="label label-important" ng-show="form.RemarksFL.$error.maxlength">The field Remarks must be a string with a maximum length of 200.</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Last Updated By</label>
+                    <div class="controls">
+                        @if (Model.FLUser != null && Model.LastUpdateDatetimeFL != null)
+                        {
+                            @Model.FLUser.Name@:&nbsp;@Utils.GetDateStr(Model.LastUpdateDatetimeFL)&nbsp;@Utils.GetTimeStr(Model.LastUpdateDatetimeFL)
+                        }
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="button" class="btn btn-success" ng-click="save()">Save</button>
+                    </div>
+                </div>
+            </div>
+
+            @{ Html.RenderPartial("_DetailsAC", Model); }
+            @{ Html.RenderPartial("_DetailsInstall", Model); }
+        </fieldset>
+    </form>
+</div>
+
+<script src="~/Areas/Fibre/js/order/detailsfl.js"></script>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Force latest IE rendering engine or ChromeFrame if installed -->
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/css/images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/app.css" rel="stylesheet" />
+
+    <script src="~/js/lib/jquery-1.10.2.min.js"></script>
+    <script src="~/js/lib/bootstrap.min.js"></script>
+</head>
+
+<body>
+    @{ Html.RenderPartial("_Header"); }
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="well">
+            @if (TempData["message"] != null)
+            {
+                <div class="alert alert-error alert-dismissable">
+                    <button type="button" class="close">&times;</button>
+                    @TempData["message"]
+                </div>
+            }
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
