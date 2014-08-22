@@ -36,7 +36,7 @@ namespace ProductOrderSystem.Domain.Fibre.Models
         public string CustName { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(200)]
         public string CustAddr { get; set; }
 
         [Required]
