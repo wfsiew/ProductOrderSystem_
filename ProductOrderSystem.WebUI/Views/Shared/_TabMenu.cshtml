@@ -3,9 +3,9 @@
 <div>
     <ul class="nav nav-tabs">
         <li class="@(ViewBag.Menu == Constants.HOME ? "active" : null)"><a href="@Url.Action("Index", "Home")"><i class="icon-home"></i> Home</a></li>
-        <li class="@(ViewBag.Menu == Constants.CREATE_ORDER ? "active" : null)"><a href="@Url.Action("Create", "Order")"><i class="icon-plus"></i> Create Order</a></li>
-        <li class="@(ViewBag.Menu == Constants.SEARCH_ORDER ? "active" : null)"><a href="@Url.Action("Search", "Order")"><i class="icon-search"></i> Search Orders</a></li>
-        <li class="@(ViewBag.Menu == Constants.EXPORT_LOG ? "active" : null)"><a href="@Url.Action("Index", "Audit")"><i class="icon-file"></i> Logs</a></li>
+        <li class="@(ViewBag.Menu == Constants.CREATE_ORDER ? "active" : null)"><a href="@Url.Action("Create", "Order", new { area = "Fibre" })"><i class="icon-plus"></i> Create Order</a></li>
+        <li class="@(ViewBag.Menu == Constants.SEARCH_ORDER ? "active" : null)"><a href="@Url.Action("Search", "Order", new { area = "Fibre" })"><i class="icon-search"></i> Search Orders</a></li>
+        <li class="@(ViewBag.Menu == Constants.EXPORT_LOG ? "active" : null)"><a href="@Url.Action("Index", "Audit", new { area = "Fibre" })"><i class="icon-file"></i> Logs</a></li>
         <li class="@(ViewBag.Menu == Constants.USER_MANAGEMENT ? "active" : null)"><a href="@Url.Action("Index", "User")"><i class="icon-user"></i> User Management</a></li>
     </ul>
 </div>

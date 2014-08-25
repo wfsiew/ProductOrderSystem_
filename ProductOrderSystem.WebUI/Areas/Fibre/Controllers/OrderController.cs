@@ -3718,7 +3718,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                     //l.Add("siewwah.tham@redtone.com");
                 }
 
-                new OrderMailController().OrderInstallDateChangedEmail(o, emailInfo, ViewData).DeliverAsync();
+                new OrderMailController().FibreOrderInstallDateChangedEmail(o, emailInfo, ViewData).DeliverAsync();
             }
 
             catch (Exception)
@@ -4277,7 +4277,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 }
 
                 emailInfo.ToList = l;
-                new OrderMailController().OrderNotificationEmail(o, emailInfo, ViewData, true).DeliverAsync();
+                new OrderMailController().FibreOrderNotificationEmail(o, emailInfo, ViewData, true).DeliverAsync();
             }
 
             catch (Exception)
@@ -4371,7 +4371,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 }
 
                 emailInfo.ToList = l;
-                new OrderMailController().OrderNotificationEmail(o, emailInfo, ViewData).DeliverAsync();
+                new OrderMailController().FibreOrderNotificationEmail(o, emailInfo, ViewData).DeliverAsync();
             }
 
             catch (Exception ex)

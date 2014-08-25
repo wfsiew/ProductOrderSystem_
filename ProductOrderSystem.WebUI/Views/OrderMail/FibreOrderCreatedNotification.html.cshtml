@@ -1,0 +1,17 @@
+﻿@using ActionMailer.Net
+
+@model ProductOrderSystem.Domain.Fibre.Models.Order_Fibre
+
+@{
+    Layout = null;
+}
+
+<style type="text/css">
+    td.tdRight {
+        text-align: right;
+    }
+</style>
+
+@ViewData["Message"]<br />
+Please check it  <a href="http://login.redtone.com/ProductOrderSystem/Fibre/Order/@ViewData["Action"]/@Model.ID">here</a><br /><br />
+@{ Html.RenderPartial("_FibreOrderCreateInfo", Model); }

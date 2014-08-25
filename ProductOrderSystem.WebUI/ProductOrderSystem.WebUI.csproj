@@ -249,7 +249,7 @@
     <Compile Include="Concrete\FormsAuthProvider.cs" />
     <Compile Include="Concrete\OrderRepository.cs" />
     <Compile Include="Concrete\UserRepository.cs" />
-    <Compile Include="Controllers\AuditController.cs" />
+    <Compile Include="Areas\Fibre\Controllers\AuditController.cs" />
     <Compile Include="Controllers\OrderMailController.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Context\FibreContext.cs" />
@@ -277,6 +277,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Areas\Fibre\js\audit\index.js" />
     <Content Include="Areas\Fibre\js\order\create.js" />
     <Content Include="Areas\Fibre\js\order\details.js" />
     <Content Include="Areas\Fibre\js\order\detailsac.js" />
@@ -378,6 +379,8 @@
     <Content Include="js\lib\angular-sanitize.min.js.map" />
     <Content Include="doc\Fibre+ Process Specs %28with comments%29HC_V5a %28Tham%29.xlsx" />
     <Content Include="Areas\Fibre\Views\Web.config" />
+    <Content Include="Areas\Fibre\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Fibre\Views\Audit\Index.cshtml" />
     <None Include="js\lib\jquery.validate-vsdoc.js" />
     <Content Include="js\lib\jquery.validate.js" />
     <Content Include="js\lib\jquery.validate.min.js" />
@@ -401,11 +404,11 @@
     <Content Include="Areas\Fibre\Views\Order\_EditInstall.cshtml" />
     <Content Include="Areas\Fibre\Views\Order\_EditAdmin.cshtml" />
     <Content Include="Areas\Fibre\Views\Order\_EditCC.cshtml" />
-    <Content Include="Views\OrderMail\OrderCreatedNotification.html.cshtml" />
-    <Content Include="Views\OrderMail\_OrderCreateInfo.cshtml" />
+    <Content Include="Views\OrderMail\FibreOrderCreatedNotification.html.cshtml" />
+    <Content Include="Views\OrderMail\_FibreOrderCreateInfo.cshtml" />
     <Content Include="Areas\Fibre\Views\Order\DetailsCC.cshtml" />
-    <Content Include="Views\OrderMail\OrderUpdatedNotification.html.cshtml" />
-    <Content Include="Views\OrderMail\_OrderUpdateInfo.cshtml" />
+    <Content Include="Views\OrderMail\FibreOrderUpdatedNotification.html.cshtml" />
+    <Content Include="Views\OrderMail\_FibreOrderUpdateInfo.cshtml" />
     <Content Include="Areas\Fibre\Views\Order\Details.cshtml" />
     <Content Include="Areas\Fibre\Views\Order\DetailsFL.cshtml" />
     <Content Include="Areas\Fibre\Views\Order\DetailsAC.cshtml" />
@@ -415,7 +418,7 @@
     <Content Include="Areas\Fibre\Views\Order\_DetailsInstall.cshtml" />
     <Content Include="Areas\Fibre\Views\Order\_DetailsCC.cshtml" />
     <Content Include="Areas\Fibre\Views\Order\DetailsInstall.cshtml" />
-    <Content Include="Views\OrderMail\OrderInstallDateNotification.html.cshtml" />
+    <Content Include="Views\OrderMail\FibreOrderInstallDateNotification.html.cshtml" />
     <Content Include="Areas\Fibre\Views\Order\DetailsInstallResubmit.cshtml" />
     <Content Include="Areas\Fibre\Views\Order\DetailsCCResubmit.cshtml" />
     <Content Include="Areas\Fibre\Views\Order\DetailsFLResubmit.cshtml" />
@@ -439,13 +442,11 @@
     </Content>
     <Content Include="Areas\Fibre\Views\Order\_View.cshtml" />
     <Content Include="Areas\Fibre\Views\Order\_ListOverdue.cshtml" />
-    <Content Include="Views\Audit\Index.cshtml" />
     <Content Include="Areas\Fibre\Views\Order\_OrderFileJS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Fibre\Views\Shared\" />
-    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -506,7 +507,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>10904</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:8383/</IISUrl>
+          <IISUrl>http://localhost:8889</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

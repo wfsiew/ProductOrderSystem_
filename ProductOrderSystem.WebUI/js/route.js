@@ -52,6 +52,9 @@
             terminate: utils.getUrl('/Fibre/Order/Terminate'),
             variation: utils.getUrl('/Fibre/Order/Variation'),
             salespersons: utils.getUrl('/Fibre/Order/SalesPersons')
+        },
+        audit: {
+            runexport: utils.getUrl('/Fibre/Audit/Export')
         }
     };
 
@@ -61,6 +64,7 @@
 
     return {
         user: user,
+        fibre: fibre,
         order: order,
         audit: audit
     };

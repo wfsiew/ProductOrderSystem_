@@ -7,8 +7,8 @@
     <ProjectGuid>{A6A55146-FFE2-4689-94D4-FAE4D86B8B41}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FibreSystem.Domain</RootNamespace>
-    <AssemblyName>FibreSystem.Domain</AssemblyName>
+    <RootNamespace>ProductOrderSystem.Domain</RootNamespace>
+    <AssemblyName>ProductOrderSystem.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

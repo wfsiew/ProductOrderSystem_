@@ -13,7 +13,7 @@ namespace ProductOrderSystem.WebUI.Controllers
 {
     public class OrderMailController : MailerBase
     {
-        public EmailResult OrderNotificationEmail(Order_Fibre o, EmailInfo mail, ViewDataDictionary viewData, bool updated = false)
+        public EmailResult FibreOrderNotificationEmail(Order_Fibre o, EmailInfo mail, ViewDataDictionary viewData, bool updated = false)
         {
             foreach (string email in mail.ToList)
             {
@@ -23,13 +23,13 @@ namespace ProductOrderSystem.WebUI.Controllers
             From = string.Format("{0} {1}", mail.DisplayName, Constants.MAIL_SENDER);
             Subject = mail.Subject;
 
-            string view = updated ? "OrderUpdatedNotification" : "OrderCreatedNotification";
+            string view = updated ? "FibreOrderUpdatedNotification" : "FibreOrderCreatedNotification";
             ViewData = viewData;
 
             return Email(view, o);
         }
 
-        public EmailResult OrderInstallDateChangedEmail(Order_Fibre o, EmailInfo mail, ViewDataDictionary viewData)
+        public EmailResult FibreOrderInstallDateChangedEmail(Order_Fibre o, EmailInfo mail, ViewDataDictionary viewData)
         {
             foreach (string email in mail.ToList)
             {
@@ -39,7 +39,7 @@ namespace ProductOrderSystem.WebUI.Controllers
             From = string.Format("{0} {1}", mail.DisplayName, Constants.MAIL_SENDER);
             Subject = mail.Subject;
 
-            string view = "OrderInstallDateNotification";
+            string view = "FibreOrderInstallDateNotification";
             ViewData = viewData;
 
             return Email(view, o);

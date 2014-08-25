@@ -14,7 +14,7 @@ using OfficeOpenXml;
 using OfficeOpenXml.Drawing;
 using OfficeOpenXml.Style;
 
-namespace ProductOrderSystem.WebUI.Controllers
+namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 {
     [Authorize]
     public class AuditController : Controller
