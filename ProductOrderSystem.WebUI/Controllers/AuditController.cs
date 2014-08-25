@@ -75,13 +75,13 @@ namespace ProductOrderSystem.WebUI.Controllers
                 q = q.Where(x => x.ActionDatetime >= _dateFrom && x.ActionDatetime < _dateTo)
                     .OrderBy(x => x.ActionDatetime);
 
-                List<OrderAudit> l = q.ToList();
+                List<OrderAudit_Fibre> l = q.ToList();
 
                 for (int i = 0; i < l.Count; i++ )
                 {
                     c = 1;
                     ++rx;
-                    OrderAudit z = l[i];
+                    OrderAudit_Fibre z = l[i];
 
                     ExcelRange er = ws.Cells[rx, c++];
                     er.Style.Numberformat.Format = "0";

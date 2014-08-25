@@ -7,7 +7,7 @@ using ProductOrderSystem.Domain.Fibre.Models;
 
 namespace ProductOrderSystem.Domain.Mapping
 {
-    public class OrderMapping : EntityTypeConfiguration<Order>
+    public class OrderMapping : EntityTypeConfiguration<Order_Fibre>
     {
         public OrderMapping()
         {

@@ -7,18 +7,18 @@ using ProductOrderSystem.Domain.Fibre.Models;
 using ProductOrderSystem.Task.Helpers;
 using ProductOrderSystem.Task.Concrete;
 
-namespace ProductOrderSystem.Task.Models
+namespace ProductOrderSystem.Task.Models.Fibre
 {
-    public class TaskCC
+    public class TaskAC
     {
-        public TaskCC()
+        public TaskAC()
         {
             ToList = new List<string>();
         }
 
         public OrderRepository Repository { get; set; }
 
-        public List<Order> Orders { get; set; }
+        public List<Order_Fibre> Orders { get; set; }
 
         public List<string> ToList { get; set; }
 
@@ -26,7 +26,7 @@ namespace ProductOrderSystem.Task.Models
 
         public void GetTaskList()
         {
-            var q = Repository.Orders.Where(x => x.ActionTypeID >= 1 && x.ActionTypeID <= 4 &&
+            var q = Repository.Orders.Where(x => x.ActionTypeID >= 5 && x.ActionTypeID <= 8 &&
                 SqlFunctions.DateDiff("day", x.LastActionDatetime, DateTime.Now) > 1);
             Orders = q.ToList();
         }
@@ -41,8 +41,8 @@ namespace ProductOrderSystem.Task.Models
                 if (Orders.Count < 1)
                     return;
 
-                var ccUsers = Repository.Context.Users.Where(x => x.Roles.Any(k => k.Name == Constants.CREDIT_CONTROL));
-                ToList.AddRange(ccUsers.Select(x => x.UserEmail).ToList());
+                var acUsers = Repository.Context.Users.Where(x => x.Roles.Any(k => k.Name == Constants.BILLING));
+                ToList.AddRange(acUsers.Select(x => x.UserEmail).ToList());
 
                 //todo: test send updated order email
                 //ToList = new List<string>();
@@ -58,7 +58,7 @@ namespace ProductOrderSystem.Task.Models
                 sender.Content = GetMailContent();
                 sender.Send();
             }
-
+            
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
@@ -71,7 +71,7 @@ namespace ProductOrderSystem.Task.Models
 
             for (int i = 0; i < Orders.Count; i++)
             {
-                Order o = Orders[i];
+                Order_Fibre o = Orders[i];
                 sb.Append("<li>");
                 sb.AppendFormat(@"<a href=""{2}/{0}/{1}"" target=""_blank"">{1} {3}</a>", GetAction(o), o.ID, WebUrl, o.CustName);
                 sb.Append("</li>");
@@ -82,26 +82,26 @@ namespace ProductOrderSystem.Task.Models
             return sb.ToString();
         }
 
-        private string GetAction(Order o)
+        private string GetAction(Order_Fibre o)
         {
-            string a = "DetailsCC";
+            string a = "DetailsAC";
 
             switch (o.ActionTypeID)
             {
-                case 2:
-                    a = "DetailsCCResubmit";
+                case 6:
+                    a = "DetailsACResubmit";
                     break;
 
-                case 3:
-                    a = "DetailsCCWithdraw";
+                case 7:
+                    a = "DetailsACWithdraw";
                     break;
 
-                case 4:
-                    a = "DetailsCCTerminate";
+                case 8:
+                    a = "DetailsACTerminate";
                     break;
 
                 default:
-                    a = "DetailsCC";
+                    a = "DetailsAC";
                     break;
             }
 

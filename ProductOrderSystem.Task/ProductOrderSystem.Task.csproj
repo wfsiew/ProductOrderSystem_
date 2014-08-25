@@ -84,11 +84,11 @@
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Models\MailCheckFormSender.cs" />
     <Compile Include="Models\MailSender.cs" />
-    <Compile Include="Models\TaskCheckForm.cs" />
-    <Compile Include="Models\TaskInstall.cs" />
-    <Compile Include="Models\TaskAC.cs" />
-    <Compile Include="Models\TaskFL.cs" />
-    <Compile Include="Models\TaskCC.cs" />
+    <Compile Include="Models\Fibre\TaskCheckForm.cs" />
+    <Compile Include="Models\Fibre\TaskInstall.cs" />
+    <Compile Include="Models\Fibre\TaskAC.cs" />
+    <Compile Include="Models\Fibre\TaskFL.cs" />
+    <Compile Include="Models\Fibre\TaskCC.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

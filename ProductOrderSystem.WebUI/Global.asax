@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="PorductOrderSystem.WebUI.MvcApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="ProductOrderSystem.WebUI.MvcApplication" Language="C#" %>

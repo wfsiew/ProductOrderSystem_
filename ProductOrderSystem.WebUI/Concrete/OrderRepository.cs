@@ -27,7 +27,7 @@ namespace ProductOrderSystem.WebUI.Concrete
             }
         }
 
-        public IQueryable<Order> Orders
+        public IQueryable<Order_Fibre> Orders
         {
             get
             {
@@ -35,7 +35,7 @@ namespace ProductOrderSystem.WebUI.Concrete
             }
         }
 
-        public IQueryable<OrderFile> OrderFiles
+        public IQueryable<OrderFile_Fibre> OrderFiles
         {
             get
             {
@@ -43,7 +43,7 @@ namespace ProductOrderSystem.WebUI.Concrete
             }
         }
 
-        public void InsertOrderFile(OrderFile o)
+        public void InsertOrderFile(OrderFile_Fibre o)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace ProductOrderSystem.WebUI.Concrete
             }
         }
 
-        public void DeleteOrderFile(OrderFile o)
+        public void DeleteOrderFile(OrderFile_Fibre o)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace ProductOrderSystem.WebUI.Concrete
             }
         }
 
-        public void Insert(Order o)
+        public void Insert(Order_Fibre o)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace ProductOrderSystem.WebUI.Concrete
             }
         }
 
-        public void Delete(Order o)
+        public void Delete(Order_Fibre o)
         {
             try
             {
@@ -96,7 +96,7 @@ namespace ProductOrderSystem.WebUI.Concrete
             }
         }
 
-        public void Update(Order o)
+        public void Update(Order_Fibre o)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace ProductOrderSystem.WebUI.Concrete
             }
         }
 
-        public void InsertOrderAudit(OrderAudit o)
+        public void InsertOrderAudit(OrderAudit_Fibre o)
         {
             try
             {

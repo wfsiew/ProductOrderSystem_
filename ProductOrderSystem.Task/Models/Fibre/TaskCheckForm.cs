@@ -7,7 +7,7 @@ using ProductOrderSystem.Domain.Fibre.Models;
 using ProductOrderSystem.Task.Helpers;
 using ProductOrderSystem.Task.Concrete;
 
-namespace ProductOrderSystem.Task.Models
+namespace ProductOrderSystem.Task.Models.Fibre
 {
     public class TaskCheckForm
     {
@@ -18,7 +18,7 @@ namespace ProductOrderSystem.Task.Models
 
         public OrderRepository Repository { get; set; }
 
-        public List<Order> Orders { get; set; }
+        public List<Order_Fibre> Orders { get; set; }
 
         public List<string> ToList { get; set; }
 
@@ -72,7 +72,7 @@ namespace ProductOrderSystem.Task.Models
 
             for (int i = 0; i < Orders.Count; i++)
             {
-                Order o = Orders[i];
+                Order_Fibre o = Orders[i];
                 sb.Append("<li>");
                 sb.AppendFormat(@"<a href=""{2}/{0}/{1}"" target=""_blank"">{1} {3}</a>", "Details", o.ID, WebUrl, o.CustName);
                 sb.Append("</li>");

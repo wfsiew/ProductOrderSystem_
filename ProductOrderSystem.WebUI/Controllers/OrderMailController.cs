@@ -13,7 +13,7 @@ namespace ProductOrderSystem.WebUI.Controllers
 {
     public class OrderMailController : MailerBase
     {
-        public EmailResult OrderNotificationEmail(Order o, EmailInfo mail, ViewDataDictionary viewData, bool updated = false)
+        public EmailResult OrderNotificationEmail(Order_Fibre o, EmailInfo mail, ViewDataDictionary viewData, bool updated = false)
         {
             foreach (string email in mail.ToList)
             {
@@ -29,7 +29,7 @@ namespace ProductOrderSystem.WebUI.Controllers
             return Email(view, o);
         }
 
-        public EmailResult OrderInstallDateChangedEmail(Order o, EmailInfo mail, ViewDataDictionary viewData)
+        public EmailResult OrderInstallDateChangedEmail(Order_Fibre o, EmailInfo mail, ViewDataDictionary viewData)
         {
             foreach (string email in mail.ToList)
             {

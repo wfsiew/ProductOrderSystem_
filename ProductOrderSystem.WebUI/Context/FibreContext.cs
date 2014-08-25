@@ -14,12 +14,12 @@ namespace ProductOrderSystem.WebUI.Context
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderFile> OrderFiles { get; set; }
+        public DbSet<Order_Fibre> Orders { get; set; }
+        public DbSet<OrderFile_Fibre> OrderFiles { get; set; }
         public DbSet<StatusType> StatusTypes { get; set; }
         public DbSet<OrderType> OrderTypes { get; set; }
-        public DbSet<ActionType> ActionTypes { get; set; }
-        public DbSet<OrderAudit> OrderAudits { get; set; }
+        public DbSet<ActionType_Fibre> ActionTypes { get; set; }
+        public DbSet<OrderAudit_Fibre> OrderAudits { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

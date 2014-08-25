@@ -73,7 +73,7 @@
   <ItemGroup>
     <Compile Include="Mapping\OrderMapping.cs" />
     <Compile Include="Mapping\UserMapping.cs" />
-    <Compile Include="Models\Fibre\Order.cs" />
+    <Compile Include="Models\Fibre\Order_Fibre.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

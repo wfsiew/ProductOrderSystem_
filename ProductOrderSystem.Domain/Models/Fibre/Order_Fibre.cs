@@ -7,11 +7,11 @@ using ProductOrderSystem.Domain.Models;
 
 namespace ProductOrderSystem.Domain.Fibre.Models
 {
-    public class Order
+    public class Order_Fibre
     {
-        public Order()
+        public Order_Fibre()
         {
-            OrderFiles = new List<OrderFile>();
+            OrderFiles = new List<OrderFile_Fibre>();
         }
 
         public int ID { get; set; }
@@ -161,7 +161,7 @@ namespace ProductOrderSystem.Domain.Fibre.Models
         public virtual User FLUser { get; set; }
         public virtual User ACUser { get; set; }
         public virtual User InstallUser { get; set; }
-        public virtual ICollection<OrderFile> OrderFiles { get; set; }
+        public virtual ICollection<OrderFile_Fibre> OrderFiles { get; set; }
     }
 
     public class OrderType
@@ -173,7 +173,7 @@ namespace ProductOrderSystem.Domain.Fibre.Models
         public string Name { get; set; }
     }
 
-    public class OrderFile
+    public class OrderFile_Fibre
     {
         public int ID { get; set; }
 
@@ -191,7 +191,7 @@ namespace ProductOrderSystem.Domain.Fibre.Models
         [Required]
         public DateTime UploadDatetime { get; set; }
 
-        public virtual Order Order { get; set; }
+        public virtual Order_Fibre Order { get; set; }
     }
 
     public class StatusType
@@ -203,7 +203,7 @@ namespace ProductOrderSystem.Domain.Fibre.Models
         public string Name { get; set; }
     }
 
-    public class ActionType
+    public class ActionType_Fibre
     {
         public int ID { get; set; }
 
@@ -214,7 +214,7 @@ namespace ProductOrderSystem.Domain.Fibre.Models
         public int MaxDue { get; set; }
     }
 
-    public class OrderAudit
+    public class OrderAudit_Fibre
     {
         public Guid ID { get; set; }
 

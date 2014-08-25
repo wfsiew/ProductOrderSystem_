@@ -11,15 +11,15 @@ namespace ProductOrderSystem.WebUI.Abstract
     public interface IOrderRepository : IDisposable
     {
         FibreContext Context { get; }
-        IQueryable<Order> Orders { get; }
-        IQueryable<OrderFile> OrderFiles { get; }
+        IQueryable<Order_Fibre> Orders { get; }
+        IQueryable<OrderFile_Fibre> OrderFiles { get; }
 
-        void InsertOrderFile(OrderFile o);
-        void DeleteOrderFile(OrderFile o);
-        void Insert(Order o);
-        void Delete(Order o);
-        void Update(Order o);
-        void InsertOrderAudit(OrderAudit o);
+        void InsertOrderFile(OrderFile_Fibre o);
+        void DeleteOrderFile(OrderFile_Fibre o);
+        void Insert(Order_Fibre o);
+        void Delete(Order_Fibre o);
+        void Update(Order_Fibre o);
+        void InsertOrderAudit(OrderAudit_Fibre o);
         void Save();
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using ProductOrderSystem.Domain.Models;
 using ProductOrderSystem.Task.Concrete;
-using ProductOrderSystem.Task.Models;
+using ProductOrderSystem.Task.Models.Fibre;
 
 namespace ProductOrderSystem.Task
 {
