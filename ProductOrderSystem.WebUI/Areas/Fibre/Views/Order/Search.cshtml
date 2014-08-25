@@ -4,7 +4,7 @@
     ViewBag.Title = "Search Order";
 }
 
-<div ng-controller="SearchOrderCtrl">
+<div ng-controller="SearchOrderCtrl" ng-init="init()">
     <div ng-hide="edit || view">
         <div collapse="isCollapsed">
             <form name="form" class="form-horizontal well" novalidate ng-submit="formSubmit()">
@@ -172,4 +172,4 @@
     </div>
 </div>
 
-<script src="~/js/order/search.js"></script>
+<script src="~/Areas/Fibre/js/order/search.js"></script>

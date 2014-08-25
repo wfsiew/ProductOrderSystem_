@@ -11,27 +11,6 @@
         unregisteredUsers: utils.getUrl('/User/UnregisteredGoogleUsers')
     };
 
-    var order = {
-        create: utils.getUrl('/Order/Create'),
-        uploadfile: utils.getUrl('/Order/UploadFile'),
-        removefile: utils.getUrl('/Order/RemoveFile'),
-        search: utils.getUrl('/Order/Search'),
-        list: utils.getUrl('/Order/List'),
-        listoverdue: utils.getUrl('/Order/ListOverdue'),
-        listpending: utils.getUrl('/Order/ListPending'),
-        del: utils.getUrl('/Order/Delete'),
-        view: utils.getUrl('/Order/View'),
-        editsc: utils.getUrl('/Order/EditSC'),
-        editcc: utils.getUrl('/Order/EditCC'),
-        editfl: utils.getUrl('/Order/EditFL'),
-        editac: utils.getUrl('/Order/EditAC'),
-        editinstall: utils.getUrl('/Order/EditInstall'),
-        withdraw: utils.getUrl('/Order/Withdraw'),
-        terminate: utils.getUrl('/Order/Terminate'),
-        variation: utils.getUrl('/Order/Variation'),
-        salespersons: utils.getUrl('/Order/SalesPersons')
-    };
-
     var fibre = {
         order: {
             create: utils.getUrl('/Fibre/Order/Create'),
@@ -64,8 +43,6 @@
 
     return {
         user: user,
-        fibre: fibre,
-        order: order,
-        audit: audit
+        fibre: fibre
     };
 }());

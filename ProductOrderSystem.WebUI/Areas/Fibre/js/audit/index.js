@@ -29,7 +29,7 @@
         ].join('&');
         var q = '?' + a;
 
-        var url = route.audit.runexport + '/' + q;
+        var url = route.fibre.audit.runexport + '/' + q;
 
         $('#exportFrame').attr('src', url);
     }

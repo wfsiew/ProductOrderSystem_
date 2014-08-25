@@ -221,6 +221,4 @@ function EditInstallCtrl($scope, $http, $filter, $timeout, $window, $rootScope, 
 
         return x ? down : up;
     }
-
-    $scope.init();
 }

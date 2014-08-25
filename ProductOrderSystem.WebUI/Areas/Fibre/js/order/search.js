@@ -356,6 +356,4 @@
             $scope.openedDateTo = true;
         });
     }
-
-    $scope.init();
 }

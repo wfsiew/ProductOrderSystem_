@@ -113,6 +113,4 @@ function EditFLCtrl($scope, $http, $filter, $timeout) {
 
         return x ? down : up;
     }
-
-    $scope.init();
 }

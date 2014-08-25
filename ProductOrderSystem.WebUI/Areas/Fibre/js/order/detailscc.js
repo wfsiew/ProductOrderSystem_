@@ -35,6 +35,4 @@
 
         $('#form').submit();
     }
-
-    $scope.init();
 }

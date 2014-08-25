@@ -71,6 +71,4 @@
 
         return x ? down : up;
     }
-
-    $scope.init();
 }

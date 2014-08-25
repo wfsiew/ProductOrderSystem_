@@ -364,6 +364,4 @@ function EditSCCtrl($scope, $http, $filter, $timeout, $window, $rootScope, uploa
 
         return x ? down : up;
     }
-
-    $scope.init();
 }

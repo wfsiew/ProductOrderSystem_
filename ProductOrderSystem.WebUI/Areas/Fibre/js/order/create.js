@@ -268,6 +268,4 @@
             toastr.error(result.message);
         }
     }
-
-    $scope.init();
 }

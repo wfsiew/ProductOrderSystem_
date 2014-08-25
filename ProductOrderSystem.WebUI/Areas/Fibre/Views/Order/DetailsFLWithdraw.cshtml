@@ -23,7 +23,7 @@
     </div>
 }
 
-<div ng-controller="DetailsFLCtrl">
+<div ng-controller="DetailsFLCtrl" ng-init="init()">
     <form id="form" name="form" class="form-horizontal" method="post" action="@Url.Action("DetailsFLWithdraw", "Order")">
         <fieldset>
             @{ Html.RenderPartial("_DetailsSC", Model); }

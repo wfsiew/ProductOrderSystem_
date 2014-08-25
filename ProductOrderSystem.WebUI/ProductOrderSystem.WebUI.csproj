@@ -312,7 +312,6 @@
     <Content Include="css\lib\toastr-icon.png" />
     <Content Include="css\lib\toastr.min.css" />
     <Content Include="productordersystem.xml" />
-    <Content Include="js\audit\index.js" />
     <Content Include="js\home\index.js" />
     <Content Include="js\lib\angular-animate.min.js" />
     <Content Include="js\lib\angular-sanitize.min.js" />
@@ -339,19 +338,6 @@
     <Content Include="js\lib\ui-bootstrap-tpls-0.8.0.min.js" />
     <Content Include="js\lib\ui-utils.min.js" />
     <Content Include="js\lib\underscore-min.js" />
-    <Content Include="js\order\create.js" />
-    <Content Include="js\order\details.js" />
-    <Content Include="js\order\detailsac.js" />
-    <Content Include="js\order\detailscc.js" />
-    <Content Include="js\order\detailsfl.js" />
-    <Content Include="js\order\detailsinstall.js" />
-    <Content Include="js\order\editac.js" />
-    <Content Include="js\order\editcc.js" />
-    <Content Include="js\order\editfl.js" />
-    <Content Include="js\order\editinstall.js" />
-    <Content Include="js\order\editsc.js" />
-    <Content Include="js\order\search.js" />
-    <Content Include="js\order\view.js" />
     <Content Include="js\route.js" />
     <Content Include="js\services.js" />
     <Content Include="js\user\controller.js" />
@@ -377,7 +363,7 @@
     <Content Include="js\lib\angular.min.js.map" />
     <Content Include="doc\Activity Log Format.xlsx" />
     <Content Include="js\lib\angular-sanitize.min.js.map" />
-    <Content Include="doc\Fibre+ Process Specs %28with comments%29HC_V5a %28Tham%29.xlsx" />
+    <Content Include="doc\Fibre\Fibre+ Process Specs %28with comments%29HC_V5a %28Tham%29.xlsx" />
     <Content Include="Areas\Fibre\Views\Web.config" />
     <Content Include="Areas\Fibre\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Fibre\Views\Audit\Index.cshtml" />
@@ -452,8 +438,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="doc\Fibre+ Process Specs %28with comments%29HC_V5 %28Tham%29.xlsx" />
-    <Content Include="doc\Portal Page details.xlsx" />
+    <Content Include="doc\Fibre\Fibre+ Process Specs %28with comments%29HC_V5 %28Tham%29.xlsx" />
+    <Content Include="doc\Fibre\Portal Page details.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Layout.cshtml" />
