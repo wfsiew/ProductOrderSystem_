@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ActionMailer.Net.Mvc;
-using ProductOrderSystem.Domain.Fibre.Models;
+using ProductOrderSystem.Domain.Models.Fibre;
 using ProductOrderSystem.WebUI.Models;
 using ProductOrderSystem.WebUI.Areas.Fibre.Models;
 using ProductOrderSystem.WebUI.Helpers;

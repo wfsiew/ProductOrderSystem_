@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.Entity.SqlServer;
-using ProductOrderSystem.Domain.Fibre.Models;
+using ProductOrderSystem.Domain.Models.Fibre;
 using ProductOrderSystem.Task.Helpers;
 using ProductOrderSystem.Task.Concrete;
 

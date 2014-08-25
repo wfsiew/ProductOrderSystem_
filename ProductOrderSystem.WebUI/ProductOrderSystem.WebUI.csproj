@@ -230,7 +230,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IAuthProvider.cs" />
-    <Compile Include="Abstract\IOrderRepository.cs" />
+    <Compile Include="Abstract\Fibre\IOrderRepository.cs" />
     <Compile Include="Abstract\IUserRepository.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Areas\Fibre\Controllers\HomeController.cs" />
@@ -247,7 +247,7 @@
     <Compile Include="Areas\Fibre\Models\OrderSearchModel.cs" />
     <Compile Include="Binders\LogonUserBinder.cs" />
     <Compile Include="Concrete\FormsAuthProvider.cs" />
-    <Compile Include="Concrete\OrderRepository.cs" />
+    <Compile Include="Concrete\Fibre\OrderRepository.cs" />
     <Compile Include="Concrete\UserRepository.cs" />
     <Compile Include="Areas\Fibre\Controllers\AuditController.cs" />
     <Compile Include="Controllers\OrderMailController.cs" />

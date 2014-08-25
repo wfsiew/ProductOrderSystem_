@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
-using ProductOrderSystem.Domain.Fibre.Models;
-using ProductOrderSystem.WebUI.Abstract;
+using ProductOrderSystem.Domain.Models.Fibre;
+using ProductOrderSystem.WebUI.Abstract.Fibre;
 using ProductOrderSystem.WebUI.Context;
 
-namespace ProductOrderSystem.WebUI.Concrete
+namespace ProductOrderSystem.WebUI.Concrete.Fibre
 {
     public class OrderRepository : IOrderRepository, IDisposable
     {

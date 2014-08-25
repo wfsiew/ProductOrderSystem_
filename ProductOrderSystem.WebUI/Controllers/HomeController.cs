@@ -5,8 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ProductOrderSystem.Domain.Models;
-using ProductOrderSystem.WebUI.Abstract;
-using ProductOrderSystem.WebUI.Concrete;
+using ProductOrderSystem.WebUI.Abstract.Fibre;
+using ProductOrderSystem.WebUI.Concrete.Fibre;
 using ProductOrderSystem.WebUI.Helpers;
 using ProductOrderSystem.WebUI.Models;
 

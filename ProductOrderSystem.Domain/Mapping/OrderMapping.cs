@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.Entity.ModelConfiguration;
-using ProductOrderSystem.Domain.Fibre.Models;
+using ProductOrderSystem.Domain.Models.Fibre;
 
 namespace ProductOrderSystem.Domain.Mapping
 {

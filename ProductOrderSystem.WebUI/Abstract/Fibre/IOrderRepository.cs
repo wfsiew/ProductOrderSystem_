@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ProductOrderSystem.Domain.Models;
-using ProductOrderSystem.Domain.Fibre.Models;
+using ProductOrderSystem.Domain.Models.Fibre;
 using ProductOrderSystem.WebUI.Context;
 
-namespace ProductOrderSystem.WebUI.Abstract
+namespace ProductOrderSystem.WebUI.Abstract.Fibre
 {
     public interface IOrderRepository : IDisposable
     {

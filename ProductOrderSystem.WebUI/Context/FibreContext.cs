@@ -5,7 +5,7 @@ using System.Web;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using ProductOrderSystem.Domain.Models;
-using ProductOrderSystem.Domain.Fibre.Models;
+using ProductOrderSystem.Domain.Models.Fibre;
 using ProductOrderSystem.Domain.Mapping;
 
 namespace ProductOrderSystem.WebUI.Context

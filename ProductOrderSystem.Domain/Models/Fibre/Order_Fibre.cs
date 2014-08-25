@@ -5,7 +5,7 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using ProductOrderSystem.Domain.Models;
 
-namespace ProductOrderSystem.Domain.Fibre.Models
+namespace ProductOrderSystem.Domain.Models.Fibre
 {
     public class Order_Fibre
     {

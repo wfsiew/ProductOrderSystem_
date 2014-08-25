@@ -13,7 +13,9 @@ namespace ProductOrderSystem.WebUI.App_Start
     using Ninject.Web.Common;
 
     using ProductOrderSystem.WebUI.Abstract;
+    using ProductOrderSystem.WebUI.Abstract.Fibre;
     using ProductOrderSystem.WebUI.Concrete;
+    using ProductOrderSystem.WebUI.Concrete.Fibre;
     using ProductOrderSystem.WebUI.Infrastructure;
 
     public static class NinjectWebCommon 
