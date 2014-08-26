@@ -15,6 +15,5 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
         {
             return View();
         }
-
     }
 }
