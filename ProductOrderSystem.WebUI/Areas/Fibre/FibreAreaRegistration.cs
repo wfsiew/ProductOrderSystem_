@@ -16,8 +16,9 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre
         {
             context.MapRoute(
                 "Fibre_default",
-                "Fibre/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                "Fibre/{controller}/{action}/{id}/{ordertypeid}",
+                new { action = "Index", id = UrlParameter.Optional, ordertypeid = UrlParameter.Optional },
+                namespaces: new[] { "ProductOrderSystem.WebUI.Areas.Fibre.Controllers" }
             );
         }
     }

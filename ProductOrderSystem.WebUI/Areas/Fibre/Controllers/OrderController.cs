@@ -45,11 +45,11 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             LoadSalesPersons();
             LoadOrderTypes();
 
-            Order_Fibre o = new Order_Fibre();
+            OrderFibre o = new OrderFibre();
 
             if (id != null)
             {
-                Order_Fibre x = repository.Orders.Where(k => k.ID == id).FirstOrDefault();
+                OrderFibre x = repository.Orders.Where(k => k.ID == id).FirstOrDefault();
 
                 if (x != null)
                 {
@@ -80,7 +80,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                     DateTime? installDatetime = Utils.GetDateTime(o.BookedInstallDate, o.BookedInstallTime);
 
-                    Order_Fibre x = new Order_Fibre();
+                    OrderFibre x = new OrderFibre();
 
                     if (installDatetime != null)
                         x.InstallDatetime = installDatetime;
@@ -114,7 +114,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                     else
                         x.ActionTypeID = 4;
 
-                    OrderAudit_Fibre z = new OrderAudit_Fibre();
+                    OrderAuditFibre z = new OrderAuditFibre();
                     z.ActionDatetime = x.LastActionDatetime;
                     z.CustName = x.CustName;
                     z.ID = Guid.NewGuid();
@@ -200,7 +200,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 //todo: remove the comment below
                 document = service.UploadFile2LO(file.InputStream, file.FileName, file.ContentType, true, logonUser.Email, userEmails);
 
-                OrderFile_Fibre o = new OrderFile_Fibre();
+                OrderFileFibre o = new OrderFileFibre();
                 o.FileName = file.FileName;
                 o.FileSize = file.ContentLength;
                 o.FileUniqueKey = null;
@@ -565,7 +565,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 if (o == null)
                     throw new UIException("Order not found");
@@ -576,11 +576,11 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 if (!a)
                     throw new UIException("You are not administrator");
 
-                List<OrderFile_Fibre> lf = o.OrderFiles.Where(f => f.OrderID == o.ID).ToList();
+                List<OrderFileFibre> lf = o.OrderFiles.Where(f => f.OrderID == o.ID).ToList();
 
                 using (TransactionScope tx = new TransactionScope())
                 {
-                    foreach (OrderFile_Fibre f in lf)
+                    foreach (OrderFileFibre f in lf)
                     {
                         repository.DeleteOrderFile(f);
                     }
@@ -615,7 +615,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 if (o == null)
                     throw new UIException("Order not found");
@@ -649,7 +649,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 if (!User.IsInRole(Constants.SALES_COORDINATOR) && !User.IsInRole(Constants.SUPER_ADMIN))
                     throw new UIException("You are not authorize to view this order");
 
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 if (o == null)
                     throw new UIException("Order not found");
@@ -686,7 +686,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -698,7 +698,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                         DateTime? installDatetime = Utils.GetDateTime(o.BookedInstallDate, o.BookedInstallTime);
 
-                        Order_Fibre y = new Order_Fibre();
+                        OrderFibre y = new OrderFibre();
 
                         if (installDatetime != null)
                             y.InstallDatetime = installDatetime;
@@ -758,7 +758,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -770,7 +770,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                         DateTime? installDatetime = Utils.GetDateTime(o.BookedInstallDate, o.BookedInstallTime);
 
-                        Order_Fibre y = new Order_Fibre();
+                        OrderFibre y = new OrderFibre();
 
                         if (installDatetime != null)
                             y.InstallDatetime = installDatetime;
@@ -832,7 +832,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -885,7 +885,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                         //    TerminateOrder(x);
                         //}
 
-                        OrderAudit_Fibre z = new OrderAudit_Fibre();
+                        OrderAuditFibre z = new OrderAuditFibre();
                         z.ActionDatetime = x.LastActionDatetime;
                         z.CustName = x.CustName;
                         z.ID = Guid.NewGuid();
@@ -975,7 +975,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 if (!User.IsInRole(Constants.FIXED_LINE) && !User.IsInRole(Constants.SUPER_ADMIN))
                     throw new UIException("You are not authorize to view this order");
 
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 if (o == null)
                     throw new UIException("Order not found");
@@ -1012,7 +1012,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -1058,7 +1058,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 if (!User.IsInRole(Constants.CREDIT_CONTROL) && !User.IsInRole(Constants.SUPER_ADMIN))
                     throw new UIException("You are not authorize to view this order");
 
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 if (o == null)
                     throw new UIException("Order not found");
@@ -1095,7 +1095,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -1141,7 +1141,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 if (!User.IsInRole(Constants.BILLING) && !User.IsInRole(Constants.SUPER_ADMIN))
                     throw new UIException("You are not authorize to view this order");
 
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 if (o == null)
                     throw new UIException("Order not found");
@@ -1178,7 +1178,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -1224,7 +1224,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 if (!User.IsInRole(Constants.INSTALLERS) && !User.IsInRole(Constants.SUPER_ADMIN))
                     throw new UIException("You are not authorize to view this order");
 
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 if (o == null)
                     throw new UIException("Order not found");
@@ -1261,7 +1261,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -1313,7 +1313,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -1407,7 +1407,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -1483,7 +1483,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                OrderFile_Fibre o = repository.OrderFiles.Where(x => x.ID == id && x.FileName == filename).FirstOrDefault();
+                OrderFileFibre o = repository.OrderFiles.Where(x => x.ID == id && x.FileName == filename).FirstOrDefault();
 
                 if (o != null)
                 {
@@ -1514,7 +1514,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -1541,7 +1541,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         public ActionResult DetailsCC(int id)
@@ -1556,7 +1556,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -1583,7 +1583,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -1596,7 +1596,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -1645,7 +1645,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -1672,7 +1672,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -1685,7 +1685,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -1734,7 +1734,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -1761,7 +1761,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -1774,7 +1774,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -1820,7 +1820,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -1847,7 +1847,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -1860,7 +1860,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -1906,7 +1906,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -1933,7 +1933,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -1946,7 +1946,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -1995,7 +1995,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -2022,7 +2022,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -2035,7 +2035,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -2084,7 +2084,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -2111,7 +2111,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -2124,7 +2124,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -2173,7 +2173,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -2200,7 +2200,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -2213,7 +2213,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -2262,7 +2262,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -2289,7 +2289,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -2302,7 +2302,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -2339,8 +2339,6 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             return DetailsAC(o.ID);
         }
 
-
-
         public ActionResult DetailsACResubmit(int id)
         {
             ViewBag.StatusSC = "";
@@ -2353,7 +2351,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -2380,7 +2378,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -2393,7 +2391,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -2442,7 +2440,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -2469,7 +2467,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -2482,7 +2480,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -2531,7 +2529,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -2558,7 +2556,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -2571,7 +2569,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -2620,7 +2618,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -2649,7 +2647,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -2663,7 +2661,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -2712,7 +2710,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -2741,7 +2739,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -2755,7 +2753,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -2804,7 +2802,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -2833,7 +2831,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -2847,7 +2845,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -2896,7 +2894,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -2925,7 +2923,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -2939,7 +2937,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -2988,7 +2986,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
             try
             {
-                Order_Fibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
+                OrderFibre o = repository.Orders.Where(x => x.ID == id).FirstOrDefault();
 
                 List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -3017,7 +3015,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 ViewBag.ErrorMessage = ex.ToString();
             }
 
-            return View(new Order_Fibre());
+            return View(new OrderFibre());
         }
 
         [HttpPost]
@@ -3031,7 +3029,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Order_Fibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
+                    OrderFibre x = repository.Orders.Where(k => k.ID == o.ID).FirstOrDefault();
 
                     if (x == null)
                         throw new UIException("Order not found");
@@ -3068,7 +3066,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             return DetailsInstallTerminate(o.ID);
         }
 
-        private object GetViewOrderObject(Order_Fibre o)
+        private object GetViewOrderObject(OrderFibre o)
         {
             List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -3152,7 +3150,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             return m;
         }
 
-        private object GetEditOrderObjectSC(Order_Fibre o)
+        private object GetEditOrderObjectSC(OrderFibre o)
         {
             List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -3239,7 +3237,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             return m;
         }
 
-        private object GetEditOrderObjectCC(Order_Fibre o)
+        private object GetEditOrderObjectCC(OrderFibre o)
         {
             List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -3324,7 +3322,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             return m;
         }
 
-        private object GetEditOrderObjectFL(Order_Fibre o)
+        private object GetEditOrderObjectFL(OrderFibre o)
         {
             List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -3409,7 +3407,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             return m;
         }
 
-        private object GetEditOrderObjectAC(Order_Fibre o)
+        private object GetEditOrderObjectAC(OrderFibre o)
         {
             List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -3494,7 +3492,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             return m;
         }
 
-        private object GetEditOrderObjectInstall(Order_Fibre o)
+        private object GetEditOrderObjectInstall(OrderFibre o)
         {
             List<StatusType> ls = repository.Context.StatusTypes.ToList();
 
@@ -3679,14 +3677,14 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             return o;
         }
 
-        private List<OrderFile_Fibre> GetOrderFiles1(int id)
+        private List<OrderFileFibre> GetOrderFiles1(int id)
         {
             var q = repository.OrderFiles.Where(x => x.OrderID == id);
             var l = q.ToList();
             return l;
         }
 
-        private void SendChargeNotification(Order_Fibre o)
+        private void SendChargeNotification(OrderFibre o)
         {
             try
             {
@@ -3726,7 +3724,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void SendUpdatedOrderEmailNotification(Order_Fibre o, int type, int? kivroleID = null)
+        private void SendUpdatedOrderEmailNotification(OrderFibre o, int type, int? kivroleID = null)
         {
             try
             {
@@ -4285,7 +4283,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void SendNewOrderCreatedEmailNotification(Order_Fibre o, int type)
+        private void SendNewOrderCreatedEmailNotification(OrderFibre o, int type)
         {
             try
             {
@@ -4380,7 +4378,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private string GetOverallStatus(Order_Fibre o)
+        private string GetOverallStatus(OrderFibre o)
         {
             string a = "";
 
@@ -4447,7 +4445,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             return r;
         }
 
-        private void CheckInstallDate(DateTime? oldInstallDatetime, Order_Fibre o)
+        private void CheckInstallDate(DateTime? oldInstallDatetime, OrderFibre o)
         {
             bool a = IsInstallDateValid(oldInstallDatetime, o.InstallDatetime);
 
@@ -4464,7 +4462,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void CheckInstallDateResubmit(DateTime? oldInstallDatetime, Order_Fibre o)
+        private void CheckInstallDateResubmit(DateTime? oldInstallDatetime, OrderFibre o)
         {
             bool b = IsInstallDateChanged(oldInstallDatetime, o.InstallDatetime);
 
@@ -4486,7 +4484,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void CheckInstallDateChanged(DateTime? oldBookedInstallDatetime, Order_Fibre o)
+        private void CheckInstallDateChanged(DateTime? oldBookedInstallDatetime, OrderFibre o)
         {
             bool a = IsInstallDateChanged(oldBookedInstallDatetime, o.InstallDatetime);
 
@@ -4511,7 +4509,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private object IsInstallDatePassed(Order_Fibre o)
+        private object IsInstallDatePassed(OrderFibre o)
         {
             bool r = false;
 
@@ -4527,7 +4525,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             return r;
         }
 
-        private void WithdrawOrder(Order_Fibre o)
+        private void WithdrawOrder(OrderFibre o)
         {
             bool b = o.StatusInstall == 1;
 
@@ -4542,7 +4540,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void TerminateOrder(Order_Fibre o)
+        private void TerminateOrder(OrderFibre o)
         {
             //SendUpdatedOrderEmailNotification(o, 28);
             //SendUpdatedOrderEmailNotification(o, 29);
@@ -4550,7 +4548,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             SendNewOrderCreatedEmailNotification(o, 3);
         }
 
-        private void ResetStatus(Order_Fibre x)
+        private void ResetStatus(OrderFibre x)
         {
             x.StatusAC = null;
             x.StatusCC = null;
@@ -4588,7 +4586,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 throw new UIException("Please select 9 AM to 5 PM only");
         }
 
-        private void ProcCCUpdate(LogonUser logonUser, OrderEditCCModel o, Order_Fibre x)
+        private void ProcCCUpdate(LogonUser logonUser, OrderEditCCModel o, OrderFibre x)
         {
             x.StatusCC = o.StatusCC;
             x.ReasonRejectCC = o.ReasonRejectCC;
@@ -4621,7 +4619,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -4662,7 +4660,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void ProcCCResubmitUpdate(LogonUser logonUser, OrderEditCCModel o, Order_Fibre x)
+        private void ProcCCResubmitUpdate(LogonUser logonUser, OrderEditCCModel o, OrderFibre x)
         {
             x.StatusCC = o.StatusCC;
             x.ReasonRejectCC = o.ReasonRejectCC;
@@ -4695,7 +4693,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -4736,7 +4734,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void ProcCCWithdrawUpdate(LogonUser logonUser, OrderEditCCModel o, Order_Fibre x)
+        private void ProcCCWithdrawUpdate(LogonUser logonUser, OrderEditCCModel o, OrderFibre x)
         {
             if (x == null)
                 throw new UIException("Order not found");
@@ -4772,7 +4770,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -4801,7 +4799,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void ProcCCTerminateUpdate(LogonUser logonUser, OrderEditCCModel o, Order_Fibre x)
+        private void ProcCCTerminateUpdate(LogonUser logonUser, OrderEditCCModel o, OrderFibre x)
         {
             x.StatusCC = o.StatusCC;
             x.ReasonRejectCC = o.ReasonRejectCC;
@@ -4828,7 +4826,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -4857,7 +4855,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void ProcAcUpdate(LogonUser logonUser, OrderEditACModel o, Order_Fibre x)
+        private void ProcAcUpdate(LogonUser logonUser, OrderEditACModel o, OrderFibre x)
         {
             x.StatusAC = o.StatusAC;
             x.ReasonRejectAC = o.ReasonRejectAC;
@@ -4885,7 +4883,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -4918,7 +4916,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void ProcACResubmitUpdate(LogonUser logonUser, OrderEditACModel o, Order_Fibre x)
+        private void ProcACResubmitUpdate(LogonUser logonUser, OrderEditACModel o, OrderFibre x)
         {
             x.StatusAC = o.StatusAC;
             x.ReasonRejectAC = o.ReasonRejectAC;
@@ -4946,7 +4944,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -4979,7 +4977,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void ProcACWithdrawUpdate(LogonUser logonUser, OrderEditACModel o, Order_Fibre x)
+        private void ProcACWithdrawUpdate(LogonUser logonUser, OrderEditACModel o, OrderFibre x)
         {
             x.StatusAC = o.StatusAC;
             x.ReasonRejectAC = o.ReasonRejectAC;
@@ -5010,7 +5008,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -5038,7 +5036,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void ProcACTerminateUpdate(LogonUser logonUser, OrderEditACModel o, Order_Fibre x)
+        private void ProcACTerminateUpdate(LogonUser logonUser, OrderEditACModel o, OrderFibre x)
         {
             x.StatusAC = o.StatusAC;
             x.ReasonRejectAC = o.ReasonRejectAC;
@@ -5066,7 +5064,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -5094,7 +5092,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void ProcFLUpdate(LogonUser logonUser, OrderEditFLModel o, Order_Fibre x)
+        private void ProcFLUpdate(LogonUser logonUser, OrderEditFLModel o, OrderFibre x)
         {
             x.StatusFL = o.StatusFL;
             x.ReasonRejectFL = o.ReasonRejectFL;
@@ -5122,7 +5120,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -5155,7 +5153,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void ProcFLResubmitUpdate(LogonUser logonUser, OrderEditFLModel o, Order_Fibre x)
+        private void ProcFLResubmitUpdate(LogonUser logonUser, OrderEditFLModel o, OrderFibre x)
         {
             x.StatusFL = o.StatusFL;
             x.ReasonRejectFL = o.ReasonRejectFL;
@@ -5183,7 +5181,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -5216,7 +5214,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void ProcFLWithdrawUpdate(LogonUser logonUser, OrderEditFLModel o, Order_Fibre x)
+        private void ProcFLWithdrawUpdate(LogonUser logonUser, OrderEditFLModel o, OrderFibre x)
         {
             x.StatusFL = o.StatusFL;
             x.ReasonRejectFL = o.ReasonRejectFL;
@@ -5250,7 +5248,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -5279,7 +5277,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void ProcFLTerminateUpdate(LogonUser logonUser, OrderEditFLModel o, Order_Fibre x)
+        private void ProcFLTerminateUpdate(LogonUser logonUser, OrderEditFLModel o, OrderFibre x)
         {
             x.StatusFL = o.StatusFL;
             x.ReasonRejectFL = o.ReasonRejectFL;
@@ -5307,7 +5305,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -5336,7 +5334,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void ProcInstallUpdate(LogonUser logonUser, OrderEditInstallModel o, Order_Fibre x)
+        private void ProcInstallUpdate(LogonUser logonUser, OrderEditInstallModel o, OrderFibre x)
         {
             DateTime? oldInstallDatetime = x.InstallDatetime;
 
@@ -5379,7 +5377,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -5416,7 +5414,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             CheckInstallDate(oldInstallDatetime, x);
         }
 
-        private void ProcInstallResubmitUpdate(LogonUser logonUser, OrderEditInstallModel o, Order_Fibre x)
+        private void ProcInstallResubmitUpdate(LogonUser logonUser, OrderEditInstallModel o, OrderFibre x)
         {
             ValidateInstallDate(o.InstallDate);
             ValidateInstallTime(o.InstallTime);
@@ -5454,7 +5452,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -5487,7 +5485,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void ProcInstallResubmit1Update(LogonUser logonUser, OrderEditInstallModel o, Order_Fibre x)
+        private void ProcInstallResubmit1Update(LogonUser logonUser, OrderEditInstallModel o, OrderFibre x)
         {
             DateTime? oldInstallDatetime = x.InstallDatetime;
 
@@ -5530,7 +5528,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -5567,7 +5565,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             CheckInstallDateResubmit(oldInstallDatetime, x);
         }
 
-        private void ProcInstallWithdrawUpdate(LogonUser logonUser, OrderEditInstallModel o, Order_Fibre x)
+        private void ProcInstallWithdrawUpdate(LogonUser logonUser, OrderEditInstallModel o, OrderFibre x)
         {
             ValidateInstallDate(o.InstallDate);
             ValidateInstallTime(o.InstallTime);
@@ -5605,7 +5603,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -5639,7 +5637,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private void ProcInstallTerminateUpdate(LogonUser logonUser, OrderEditInstallModel o, Order_Fibre x)
+        private void ProcInstallTerminateUpdate(LogonUser logonUser, OrderEditInstallModel o, OrderFibre x)
         {
             ValidateInstallDate(o.InstallDate);
             ValidateInstallTime(o.InstallTime);
@@ -5680,7 +5678,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 x.KIVRoleID = role.ID;
             }
 
-            OrderAudit_Fibre z = new OrderAudit_Fibre();
+            OrderAuditFibre z = new OrderAuditFibre();
             z.ActionDatetime = x.LastActionDatetime;
             z.CustName = x.CustName;
             z.ID = Guid.NewGuid();
@@ -5708,7 +5706,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             }
         }
 
-        private bool GetSortQuery(ref IQueryable<Order_Fibre> q, string column)
+        private bool GetSortQuery(ref IQueryable<OrderFibre> q, string column)
         {
             bool a = true;
 
@@ -5874,7 +5872,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             return a;
         }
 
-        private object GetListObject(List<Order_Fibre> l)
+        private object GetListObject(List<OrderFibre> l)
         {
             object lx = l.Select(x => new
             {
@@ -5907,7 +5905,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             return lx;
         }
 
-        private bool IsUrgent(Order_Fibre o)
+        private bool IsUrgent(OrderFibre o)
         {
             bool a = false;
             TimeSpan ts = DateTime.Now - o.LastActionDatetime;
@@ -5963,7 +5961,7 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
             return a;
         }
 
-        private string GetAction(Order_Fibre o)
+        private string GetAction(OrderFibre o)
         {
             string a = "Details";
 

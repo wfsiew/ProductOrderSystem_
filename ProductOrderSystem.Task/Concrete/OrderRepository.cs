@@ -26,7 +26,7 @@ namespace ProductOrderSystem.Task.Concrete
             }
         }
 
-        public IQueryable<Order_Fibre> Orders
+        public IQueryable<OrderFibre> Orders
         {
             get
             {

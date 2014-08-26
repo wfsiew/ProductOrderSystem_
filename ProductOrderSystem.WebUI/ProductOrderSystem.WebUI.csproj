@@ -250,6 +250,7 @@
     <Compile Include="Concrete\Fibre\OrderRepository.cs" />
     <Compile Include="Concrete\UserRepository.cs" />
     <Compile Include="Areas\Fibre\Controllers\AuditController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\OrderMailController.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Context\FibreContext.cs" />
@@ -367,6 +368,9 @@
     <Content Include="Areas\Fibre\Views\Web.config" />
     <Content Include="Areas\Fibre\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Fibre\Views\Audit\Index.cshtml" />
+    <Content Include="doc\Data n Voice\Data Process Specs _V1.xlsx" />
+    <Content Include="doc\Data n Voice\Portal Page - 12Aug details.xlsx" />
+    <Content Include="doc\Data n Voice\Voice Process Specs _V1.xlsx" />
     <None Include="js\lib\jquery.validate-vsdoc.js" />
     <Content Include="js\lib\jquery.validate.js" />
     <Content Include="js\lib\jquery.validate.min.js" />

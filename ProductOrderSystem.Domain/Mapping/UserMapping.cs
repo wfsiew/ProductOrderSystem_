@@ -20,7 +20,14 @@ namespace ProductOrderSystem.Domain.Mapping
                     m.MapRightKey("RoleID");
                 });
 
-            
+            HasMany(i => i.Teams)
+                .WithMany(u => u.Users)
+                .Map(m =>
+                {
+                    m.ToTable("UserTeam");
+                    m.MapLeftKey("UserID");
+                    m.MapRightKey("TeamID");
+                });
         }
     }
 }

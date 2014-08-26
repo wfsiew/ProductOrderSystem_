@@ -75,13 +75,13 @@ namespace ProductOrderSystem.WebUI.Areas.Fibre.Controllers
                 q = q.Where(x => x.ActionDatetime >= _dateFrom && x.ActionDatetime < _dateTo)
                     .OrderBy(x => x.ActionDatetime);
 
-                List<OrderAudit_Fibre> l = q.ToList();
+                List<OrderAuditFibre> l = q.ToList();
 
                 for (int i = 0; i < l.Count; i++ )
                 {
                     c = 1;
                     ++rx;
-                    OrderAudit_Fibre z = l[i];
+                    OrderAuditFibre z = l[i];
 
                     ExcelRange er = ws.Cells[rx, c++];
                     er.Style.Numberformat.Format = "0";

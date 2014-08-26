@@ -18,7 +18,7 @@ namespace ProductOrderSystem.Task.Models.Fibre
 
         public OrderRepository Repository { get; set; }
 
-        public List<Order_Fibre> Orders { get; set; }
+        public List<OrderFibre> Orders { get; set; }
 
         public List<string> ToList { get; set; }
 
@@ -72,7 +72,7 @@ namespace ProductOrderSystem.Task.Models.Fibre
 
             for (int i = 0; i < Orders.Count; i++)
             {
-                Order_Fibre o = Orders[i];
+                OrderFibre o = Orders[i];
                 sb.Append("<li>");
                 sb.AppendFormat(@"<a href=""{2}/{0}/{1}"" target=""_blank"">{1} {3}</a>", "Details", o.ID, WebUrl, o.CustName);
                 sb.Append("</li>");

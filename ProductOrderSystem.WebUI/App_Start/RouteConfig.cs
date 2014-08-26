@@ -20,11 +20,12 @@ namespace ProductOrderSystem.WebUI
                 namespaces: new[] { "ProductOrderSystem.WebUI.Controllers" }
             );
 
-            //routes.MapRoute(
-            //    name: "Order",
-            //    url: "{controller}/{action}/{id}/{ordertypeid}",
-            //    defaults: new { controller = "Order", action = "Create", id = UrlParameter.Optional, ordertypeid = UrlParameter.Optional }
-            //);
+            routes.MapRoute(
+                name: "Order",
+                url: "{controller}/{action}/{id}/{ordertypeid}",
+                defaults: new { controller = "Order", action = "Create", id = UrlParameter.Optional, ordertypeid = UrlParameter.Optional },
+                namespaces: new[] { "ProductOrderSystem.WebUI.Controllers" }
+            );
         }
     }
 }
