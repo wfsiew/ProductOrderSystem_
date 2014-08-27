@@ -22,8 +22,8 @@ namespace ProductOrderSystem.WebUI
 
             routes.MapRoute(
                 name: "Order",
-                url: "{controller}/{action}/{id}/{ordertypeid}",
-                defaults: new { controller = "Order", action = "Create", id = UrlParameter.Optional, ordertypeid = UrlParameter.Optional },
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Order", action = "Create", id = UrlParameter.Optional },
                 namespaces: new[] { "ProductOrderSystem.WebUI.Controllers" }
             );
         }

@@ -22,7 +22,6 @@ namespace PorductOrderSystem.WebUI.Controllers
             return RedirectToAction("Create", "Order", new
             {
                 area = "Fibre",
-                logonUser = logonUser,
                 id = id,
                 ordertypeid = ordertypeid
             });
@@ -32,8 +31,7 @@ namespace PorductOrderSystem.WebUI.Controllers
         {
             return RedirectToAction("Search", "Order", new
             {
-                area = "Fibre",
-                logonUser = logonUser
+                area = "Fibre"
             });
         }
 
