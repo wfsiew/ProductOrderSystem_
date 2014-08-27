@@ -24,7 +24,7 @@
 }
 
 <div ng-controller="DetailsInstallCtrl" ng-init="initID(@Model.ID)">
-    <form id="form" name="form" class="form-horizontal" method="post" enctype="multipart/form-data" action="@Url.Action("DetailsInstallWithdraw", "Order")">
+    <form id="form" name="form" class="form-horizontal" method="post" enctype="multipart/form-data" action="@Url.Action("DetailsInstallTerminate", "Order")">
         <fieldset>
             @{ Html.RenderPartial("_DetailsSC", Model); }
             @{ Html.RenderPartial("_DetailsCC", Model); }
@@ -192,4 +192,4 @@
 </div>
 
 @{ Html.RenderPartial("_OrderFileJS"); }
-<script src="~/Areas/Fibre/js/order/detailsinstall.js"></script>
+<script src="~/Areas/Fibre/js/fibreorder/detailsinstall.js"></script>
